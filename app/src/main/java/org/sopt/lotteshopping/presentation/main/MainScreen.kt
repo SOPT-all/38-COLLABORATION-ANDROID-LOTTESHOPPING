@@ -1,6 +1,5 @@
 package org.sopt.lotteshopping.presentation.main
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

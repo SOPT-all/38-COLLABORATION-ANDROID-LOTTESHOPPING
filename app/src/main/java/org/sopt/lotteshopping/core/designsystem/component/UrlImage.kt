@@ -1,4 +1,5 @@
 package org.sopt.lotteshopping.core.designsystem.component
+
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
