@@ -1,4 +1,5 @@
-package org.sopt.lotteshopping.ui.theme
+package org.sopt.lotteshopping.core.designsystem.theme
+
 
 import androidx.compose.ui.graphics.Color
 
