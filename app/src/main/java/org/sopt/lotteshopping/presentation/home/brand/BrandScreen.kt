@@ -1,4 +1,4 @@
-package org.sopt.lotteshopping.presentation.brand
+package org.sopt.lotteshopping.presentation.home.brand
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
