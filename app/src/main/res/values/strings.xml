@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">LOTTESHOPPING</string>
+    <string name="home">홈</string>
+    <string name="place">지점 안내</string>
+    <string name="pay">결제</string>
+    <string name="shopping">쇼핑 정보</string>
+    <string name="my">MY</string>
+
+
+
+
 </resources>
