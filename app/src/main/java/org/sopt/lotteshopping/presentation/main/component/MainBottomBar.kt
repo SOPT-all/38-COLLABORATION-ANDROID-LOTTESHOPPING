@@ -29,6 +29,7 @@ import kotlinx.collections.immutable.toImmutableList
 import org.sopt.lotteshopping.core.common.util.noRippleClickable
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 
+//TODO 디자인 시안에 맞추어 수정 
 @Composable
 fun MainBottomBar(
     tabs: ImmutableList<MainTab>,
