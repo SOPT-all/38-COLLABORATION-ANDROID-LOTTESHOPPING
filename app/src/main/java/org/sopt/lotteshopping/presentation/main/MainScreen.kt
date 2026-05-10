@@ -32,7 +32,7 @@ fun MainScreen(
     Scaffold(
         bottomBar = {
             AnimatedVisibility(
-                visible = navigator.showBottomBar(),
+                visible = true,
                 enter = fadeIn() + slideIn { IntOffset(0, it.height) },
                 exit = fadeOut() + slideOut { IntOffset(0, it.height) },
             ) {

@@ -16,18 +16,14 @@ import org.sopt.lotteshopping.presentation.shopping.navigation.navigateToShoppin
 class MainNavigator(
     val navController: NavHostController,
 ) {
-    private val currentDestination: NavDestination?
-        @Composable get() =
-            navController
-                .currentBackStackEntryAsState()
-                .value
-                ?.destination
-
     val startDestination = Home
 
     val currentTab: MainTab?
         @Composable get() {
-            val destination = currentDestination
+            val destination = navController
+                .currentBackStackEntryAsState()
+                .value
+                ?.destination
             return MainTab.entries.find { tab ->
                 destination?.hasRoute(tab.route::class) == true
             }
@@ -57,13 +53,6 @@ class MainNavigator(
 
     fun navigateUp() = navController.navigateUp()
 
-    @Composable
-    fun showBottomBar(): Boolean {
-        val destination = currentDestination
-        return MainTab.contains { route ->
-            destination?.hasRoute(route::class) == true
-        }
-    }
 }
 
 @Composable
