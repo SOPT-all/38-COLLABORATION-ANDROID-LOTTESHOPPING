@@ -25,6 +25,8 @@ import org.sopt.lotteshopping.presentation.my.navigation.myGraph
 import org.sopt.lotteshopping.presentation.pay.payGraph
 import org.sopt.lotteshopping.presentation.shopping.navigation.shoppingGraph
 
+private val mainTabs = MainTab.entries.toImmutableList()
+
 @Composable
 fun MainScreen(
     navigator: MainNavigator = rememberMainNavigator(),
@@ -37,7 +39,7 @@ fun MainScreen(
                 exit = fadeOut() + slideOut { IntOffset(0, it.height) },
             ) {
                 MainBottomBar(
-                    tabs = MainTab.entries.toImmutableList(),
+                    tabs = mainTabs,
                     currentTab = navigator.currentTab,
                     onTabSelected = navigator::navigate,
                     modifier = Modifier.navigationBarsPadding(),
