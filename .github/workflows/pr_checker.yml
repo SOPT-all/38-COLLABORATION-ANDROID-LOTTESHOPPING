@@ -60,3 +60,6 @@ jobs:
 
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest
+
+      - name: Create local.properties
+        run: echo "base.url=https://temp.com" > local.properties
