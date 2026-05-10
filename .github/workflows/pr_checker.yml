@@ -24,15 +24,9 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Create local.properties
-        env:
-          LOCAL_PROPERTIES: ${{ secrets.LOCAL_PROPERTIES }}
         run: |
-          if [ -n "$LOCAL_PROPERTIES" ]; then
-            echo "${LOCAL_PROPERTIES}" > local.properties
-            echo "sdk.dir=$ANDROID_SDK_ROOT" >> local.properties
-          else
-            echo "LOCAL_PROPERTIES not found."
-          fi
+          echo "base.url=https://temp.com" > local.properties
+          echo "sdk.dir=$ANDROID_SDK_ROOT" >> local.properties
 
       - name: Restore debug keystore
         env:
@@ -60,6 +54,3 @@ jobs:
 
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest
-
-      - name: Create local.properties
-        run: echo "base.url=https://temp.com" > local.properties
