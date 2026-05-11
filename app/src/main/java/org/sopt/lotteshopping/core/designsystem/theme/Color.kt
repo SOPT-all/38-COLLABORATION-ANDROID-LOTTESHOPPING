@@ -18,8 +18,8 @@ data class LotteColors(
     val gray500: Color,
     val gray600: Color,
     val gray700: Color,
-    val common100: Color,
-    val common0: Color,
+    val white: Color,
+    val black: Color,
 ) {
     val orangeGradient: Brush
         get() = Brush.horizontalGradient(
