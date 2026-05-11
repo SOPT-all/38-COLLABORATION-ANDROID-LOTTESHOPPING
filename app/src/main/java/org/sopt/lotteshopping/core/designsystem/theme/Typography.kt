@@ -156,7 +156,7 @@ private fun lotteTextStyle(
     fontFamily = NotoSansKr,
     fontWeight = weight,
     fontSize = size.sp,
-    lineHeight = DEFAULT_LINE_HEIGHT,
+    lineHeight = DEFAULT_LINE_HEIGHT.em,
     letterSpacing = letterSpacing.em,
     platformStyle = PlatformTextStyle(
         includeFontPadding = false,
@@ -167,6 +167,6 @@ private fun lotteTextStyle(
     ),
 )
 
-private val DEFAULT_LINE_HEIGHT = 1.4.em
+private const val DEFAULT_LINE_HEIGHT = 1.4f
 private const val LETTER_SPACING_LARGE = -0.01f
 private const val LETTER_SPACING_SMALL = -0.02f
