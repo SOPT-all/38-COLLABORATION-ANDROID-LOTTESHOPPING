@@ -3,11 +3,18 @@ package org.sopt.lotteshopping.core.designsystem.theme
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import org.sopt.lotteshopping.R
 
-private val NotoSansKr = FontFamily.SansSerif
+private val NotoSansKr = FontFamily(
+    Font(R.font.noto_sans_kr_regular, FontWeight.Normal),
+    Font(R.font.noto_sans_kr_medium, FontWeight.Medium),
+    Font(R.font.noto_sans_kr_semibold, FontWeight.SemiBold),
+    Font(R.font.noto_sans_kr_bold, FontWeight.Bold),
+)
 
 @Immutable
 data class LotteTypography(
@@ -56,7 +63,7 @@ val defaultLotteTypography = LotteTypography(
         b30 = lotteTextStyle(
             weight = FontWeight.Bold,
             size = 30,
-            lineHeight = 42,
+            lineHeight = 42f,
             letterSpacing = -0.3f,
         ),
     ),
@@ -136,7 +143,7 @@ val defaultLotteTypography = LotteTypography(
         r10 = lotteTextStyle(
             weight = FontWeight.Normal,
             size = 10,
-            lineHeight = 14,
+            lineHeight = 14f,
             letterSpacing = -0.2f,
         ),
     ),
@@ -154,12 +161,12 @@ val defaultMaterialTypography = Typography(
 private fun lotteTextStyle(
     weight: FontWeight,
     size: Int,
-    lineHeight: Number,
+    lineHeight: Float,
     letterSpacing: Float,
 ) = TextStyle(
     fontFamily = NotoSansKr,
     fontWeight = weight,
     fontSize = size.sp,
-    lineHeight = lineHeight.toFloat().sp,
+    lineHeight = lineHeight.sp,
     letterSpacing = letterSpacing.sp,
 )
