@@ -28,7 +28,7 @@ import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.data.model.info.HighlightModel
 
 @Composable
-fun ShoppingHighlightList(
+fun ShoppingHighlightSection(
     highlights: List<HighlightModel>,
     modifier: Modifier = Modifier,
 ) {
@@ -83,9 +83,9 @@ private fun ActionButton(
 
 @Preview(showBackground = true)
 @Composable
-private fun ShoppingHighlightListPreview() {
+private fun ShoppingHighlightSectionPreview() {
     LOTTESHOPPINGTheme {
-        ShoppingHighlightList(
+        ShoppingHighlightSection(
             highlights = listOf(
                 HighlightModel(
                     id = 1L,
