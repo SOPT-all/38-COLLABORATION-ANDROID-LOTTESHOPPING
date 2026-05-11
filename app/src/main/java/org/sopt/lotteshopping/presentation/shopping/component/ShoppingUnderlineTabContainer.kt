@@ -20,9 +20,22 @@ private val tabLabels = listOf("쇼핑뉴스", "사은", "문화/이벤트")
 fun ShoppingUnderlineTabContainer(
     modifier: Modifier = Modifier,
 ) {
+    val colors = LotteTheme.colors
+
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .drawBehind {
+                val strokeWidth = 0.4.dp.toPx()
+                val y = size.height + strokeWidth / 2
+
+                drawLine(
+                    color = colors.gray200,
+                    start = Offset(0f, y),
+                    end = Offset(size.width, y),
+                    strokeWidth = strokeWidth,
+                )
+            }
             .padding(start = 24.dp, top = 14.dp),
         horizontalArrangement = Arrangement.spacedBy(20.dp),
     ) {
@@ -69,6 +82,8 @@ private fun UnderlineTab(
 @Composable
 private fun ShoppingUnderlineTabContainerPreview() {
     LOTTESHOPPINGTheme {
-        ShoppingUnderlineTabContainer()
+        ShoppingUnderlineTabContainer(
+            modifier = Modifier.padding(vertical = 20.dp)
+        )
     }
 }
