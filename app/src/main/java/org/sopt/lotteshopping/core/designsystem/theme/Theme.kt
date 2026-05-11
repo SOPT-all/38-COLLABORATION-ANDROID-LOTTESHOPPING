@@ -9,6 +9,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 
 private val LocalLotteColors = staticCompositionLocalOf { defaultLotteColors }
 private val LocalLotteTypography = staticCompositionLocalOf { defaultLotteTypography }
+private val LocalLotteGrid = staticCompositionLocalOf { defaultLotteGrid }
 
 private val LotteColorScheme = lightColorScheme(
     primary = defaultLotteColors.lime500,
@@ -33,17 +34,24 @@ object LotteTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalLotteTypography.current
+
+    val grid: LotteGrid
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalLotteGrid.current
 }
 
 @Composable
 fun ProvideLotteDesignTokens(
     colors: LotteColors = defaultLotteColors,
     typography: LotteTypography = defaultLotteTypography,
+    grid: LotteGrid = defaultLotteGrid,
     content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(
         LocalLotteColors provides colors,
         LocalLotteTypography provides typography,
+        LocalLotteGrid provides grid,
         content = content,
     )
 }
