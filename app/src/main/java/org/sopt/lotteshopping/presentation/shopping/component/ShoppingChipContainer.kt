@@ -46,24 +46,24 @@ fun ShoppingChipContainer(
 
 private enum class ChipType {
     ACTIVE, DEFAULT;
-}
 
-@Composable
-private fun ChipType.textColor(): Color = when (this) {
-    ChipType.ACTIVE -> LotteTheme.colors.white
-    ChipType.DEFAULT -> LotteTheme.colors.black
-}
+    val textColor: Color
+        @Composable get() = when (this) {
+            ACTIVE -> LotteTheme.colors.white
+            DEFAULT -> LotteTheme.colors.black
+        }
 
-@Composable
-private fun ChipType.backgroundColor(): Color = when (this) {
-    ChipType.ACTIVE -> LotteTheme.colors.black
-    ChipType.DEFAULT -> LotteTheme.colors.white
-}
+    val backgroundColor: Color
+        @Composable get() = when (this) {
+            ACTIVE -> LotteTheme.colors.black
+            DEFAULT -> LotteTheme.colors.white
+        }
 
-@Composable
-private fun ChipType.borderColor(): Color = when (this) {
-    ChipType.ACTIVE -> LotteTheme.colors.black
-    ChipType.DEFAULT -> LotteTheme.colors.gray200
+    val borderColor: Color
+        @Composable get() = when (this) {
+            ACTIVE -> LotteTheme.colors.black
+            DEFAULT -> LotteTheme.colors.gray200
+        }
 }
 
 @Composable
@@ -78,15 +78,15 @@ private fun Chip(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
             .noRippleClickable(onClick)
-            .background(type.backgroundColor())
+            .background(type.backgroundColor)
             .border(
                 width = 1.dp,
-                color = type.borderColor(),
+                color = type.borderColor,
                 shape = RoundedCornerShape(8.dp),
             )
             .padding(horizontal = 14.dp)
             .padding(top = 6.dp, bottom = 8.dp),
-        color = type.textColor(),
+        color = type.textColor,
         style = LotteTheme.typography.label.m12,
     )
 }
