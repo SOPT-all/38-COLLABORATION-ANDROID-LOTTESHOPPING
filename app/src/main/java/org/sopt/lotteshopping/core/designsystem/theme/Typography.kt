@@ -2,7 +2,9 @@ package org.sopt.lotteshopping.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Immutable
+import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -156,6 +158,13 @@ private fun lotteTextStyle(
     fontSize = size.sp,
     lineHeight = DEFAULT_LINE_HEIGHT,
     letterSpacing = letterSpacing.em,
+    platformStyle = PlatformTextStyle(
+        includeFontPadding = false,
+    ),
+    lineHeightStyle = LineHeightStyle(
+        alignment = LineHeightStyle.Alignment.Center,
+        trim = LineHeightStyle.Trim.None,
+    ),
 )
 
 private val DEFAULT_LINE_HEIGHT = 1.4.em
