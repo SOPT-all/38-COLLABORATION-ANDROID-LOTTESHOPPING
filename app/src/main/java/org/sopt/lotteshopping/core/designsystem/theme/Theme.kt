@@ -8,6 +8,7 @@ import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 
 private val LocalLotteColors = staticCompositionLocalOf { defaultLotteColors }
+private val LocalLotteTypography = staticCompositionLocalOf { defaultLotteTypography }
 
 private val LotteColorScheme = lightColorScheme(
     primary = defaultLotteColors.lime500,
@@ -27,15 +28,22 @@ object LotteTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalLotteColors.current
+
+    val typography: LotteTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalLotteTypography.current
 }
 
 @Composable
-fun ProvideLotteColors(
+fun ProvideLotteDesignTokens(
     colors: LotteColors = defaultLotteColors,
+    typography: LotteTypography = defaultLotteTypography,
     content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(
         LocalLotteColors provides colors,
+        LocalLotteTypography provides typography,
         content = content,
     )
 }
@@ -44,10 +52,10 @@ fun ProvideLotteColors(
 fun LOTTESHOPPINGTheme(
     content: @Composable () -> Unit,
 ) {
-    ProvideLotteColors {
+    ProvideLotteDesignTokens {
         MaterialTheme(
             colorScheme = LotteColorScheme,
-            typography = Typography,
+            typography = defaultMaterialTypography,
             content = content,
         )
     }
