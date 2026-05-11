@@ -13,12 +13,10 @@ private val LocalLotteTypography = staticCompositionLocalOf { defaultLotteTypogr
 private val LotteColorScheme = lightColorScheme(
     primary = defaultLotteColors.lime500,
     secondary = defaultLotteColors.blue500,
-    tertiary = defaultLotteColors.orangeGradientStart,
     background = defaultLotteColors.white,
     surface = defaultLotteColors.white,
     onPrimary = defaultLotteColors.black,
     onSecondary = defaultLotteColors.white,
-    onTertiary = defaultLotteColors.white,
     onBackground = defaultLotteColors.black,
     onSurface = defaultLotteColors.black,
 )

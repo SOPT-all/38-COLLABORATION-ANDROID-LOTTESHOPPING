@@ -8,8 +8,7 @@ import androidx.compose.ui.graphics.Color
 data class LotteColors(
     val lime500: Color,
     val blue500: Color,
-    val orangeGradientStart: Color,
-    val orangeGradientEnd: Color,
+    val orangeGradient: Brush,
     val gray50: Color,
     val gray100: Color,
     val gray200: Color,
@@ -20,18 +19,14 @@ data class LotteColors(
     val gray700: Color,
     val white: Color,
     val black: Color,
-) {
-    val orangeGradient: Brush
-        get() = Brush.horizontalGradient(
-            colors = listOf(orangeGradientEnd, orangeGradientStart),
-        )
-}
+)
 
 val defaultLotteColors = LotteColors(
     lime500 = Color(0xFFDAF631),
     blue500 = Color(0xFF008DFF),
-    orangeGradientStart = Color(0xFFFB8408),
-    orangeGradientEnd = Color(0xFFFE6501),
+    orangeGradient = Brush.horizontalGradient(
+        colors = listOf(Color(0xFFFE6501), Color(0xFFFB8408)),
+    ),
     gray50 = Color(0xFFF5F6F6),
     gray100 = Color(0xFFECEDED),
     gray200 = Color(0xFFD9D9D9),

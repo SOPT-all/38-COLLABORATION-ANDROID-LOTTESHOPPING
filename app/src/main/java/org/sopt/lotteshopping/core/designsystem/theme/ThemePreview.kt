@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,8 +29,7 @@ private fun LotteColorPreview() {
         ) {
             ColorPreviewItem("lime500", LotteTheme.colors.lime500)
             ColorPreviewItem("blue500", LotteTheme.colors.blue500)
-            ColorPreviewItem("orangeGradientStart", LotteTheme.colors.orangeGradientStart)
-            ColorPreviewItem("orangeGradientEnd", LotteTheme.colors.orangeGradientEnd)
+            GradientPreviewItem("orangeGradient", LotteTheme.colors.orangeGradient)
             ColorPreviewItem("gray50", LotteTheme.colors.gray50)
             ColorPreviewItem("gray100", LotteTheme.colors.gray100)
             ColorPreviewItem("gray200", LotteTheme.colors.gray200)
@@ -41,6 +41,30 @@ private fun LotteColorPreview() {
             ColorPreviewItem("white", LotteTheme.colors.white)
             ColorPreviewItem("black", LotteTheme.colors.black)
         }
+    }
+}
+
+@Composable
+private fun GradientPreviewItem(
+    name: String,
+    brush: Brush,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier
+                .size(32.dp)
+                .background(brush),
+        )
+        Text(
+            text = name,
+            style = LotteTheme.typography.body.m14,
+            color = LotteTheme.colors.black,
+        )
     }
 }
 
