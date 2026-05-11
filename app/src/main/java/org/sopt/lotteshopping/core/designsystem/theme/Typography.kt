@@ -66,75 +66,75 @@ val defaultLotteTypography = LotteTypography(
         b30 = lotteTextStyle(
             weight = FontWeight.Bold,
             size = 30,
-            letterSpacing = DISPLAY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_LARGE,
         ),
     ),
     title = LotteTitleTypography(
         sb18 = lotteTextStyle(
             weight = FontWeight.SemiBold,
             size = 18,
-            letterSpacing = TITLE_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_LARGE,
         ),
         m18 = lotteTextStyle(
             weight = FontWeight.Medium,
             size = 18,
-            letterSpacing = TITLE_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_LARGE,
         ),
         r18 = lotteTextStyle(
             weight = FontWeight.Normal,
             size = 18,
-            letterSpacing = TITLE_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_LARGE,
         ),
     ),
     body = LotteBodyTypography(
         sb16 = lotteTextStyle(
             weight = FontWeight.SemiBold,
             size = 16,
-            letterSpacing = BODY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_SMALL,
         ),
         m16 = lotteTextStyle(
             weight = FontWeight.Medium,
             size = 16,
-            letterSpacing = BODY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_SMALL,
         ),
         r16 = lotteTextStyle(
             weight = FontWeight.Normal,
             size = 16,
-            letterSpacing = BODY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_SMALL,
         ),
         sb14 = lotteTextStyle(
             weight = FontWeight.SemiBold,
             size = 14,
-            letterSpacing = BODY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_SMALL,
         ),
         m14 = lotteTextStyle(
             weight = FontWeight.Medium,
             size = 14,
-            letterSpacing = BODY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_SMALL,
         ),
         r14 = lotteTextStyle(
             weight = FontWeight.Normal,
             size = 14,
-            letterSpacing = BODY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_SMALL,
         ),
     ),
     label = LotteLabelTypography(
         m12 = lotteTextStyle(
             weight = FontWeight.Medium,
             size = 12,
-            letterSpacing = BODY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_SMALL,
         ),
         r12 = lotteTextStyle(
             weight = FontWeight.Normal,
             size = 12,
-            letterSpacing = BODY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_SMALL,
         ),
     ),
     caption = LotteCaptionTypography(
         r10 = lotteTextStyle(
             weight = FontWeight.Normal,
             size = 10,
-            letterSpacing = BODY_LETTER_SPACING,
+            letterSpacing = LETTER_SPACING_SMALL,
         ),
     ),
 )
@@ -168,6 +168,5 @@ private fun lotteTextStyle(
 )
 
 private val DEFAULT_LINE_HEIGHT = 1.4.em
-private const val DISPLAY_LETTER_SPACING = -0.01f
-private const val TITLE_LETTER_SPACING = -0.01f
-private const val BODY_LETTER_SPACING = -0.02f
+private const val LETTER_SPACING_LARGE = -0.01f
+private const val LETTER_SPACING_SMALL = -0.02f
