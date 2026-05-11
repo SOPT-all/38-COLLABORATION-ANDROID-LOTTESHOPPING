@@ -40,6 +40,6 @@ val defaultLotteColors = LotteColors(
     gray500 = Color(0xFF666666),
     gray600 = Color(0xFF434343),
     gray700 = Color(0xFF1F1B1A),
-    common100 = Color(0xFFFFFFFF),
-    common0 = Color(0xFF000000),
+    white = Color(0xFFFFFFFF),
+    black = Color(0xFF000000),
 )
