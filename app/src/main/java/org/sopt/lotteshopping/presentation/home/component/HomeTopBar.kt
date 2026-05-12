@@ -33,6 +33,52 @@ enum class HomeTab(val title: String) {
 }
 
 @Composable
+private fun HomeSegmentTabItem(
+    tab: HomeTab,
+    isSelected: Boolean,
+    onTabClick: (HomeTab) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .zIndex(if (isSelected) 1f else 0f)
+            .background(
+                color = if (isSelected) colors.lime500 else colors.gray700,
+                shape = RoundedCornerShape(size = 8.dp)
+            )
+            .noRippleClickable { onTabClick(tab) }
+            .padding(horizontal = 21.dp, vertical = 6.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = tab.title,
+            style = typography.label.m12,
+            color = if (isSelected) colors.black else colors.white
+        )
+    }
+}
+@Composable
+private fun HomeSegmentTab(
+    selectedTab: HomeTab,
+    onTabClick: (HomeTab) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy((-6).dp, Alignment.CenterHorizontally),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        HomeTab.entries.forEach { tab ->
+            HomeSegmentTabItem(
+                tab = tab,
+                isSelected = tab == selectedTab,
+                onTabClick = onTabClick,
+            )
+        }
+    }
+}
+
+@Composable
 fun HomeTopBar(
     selectedTab: HomeTab,
     onTabClick: (HomeTab) -> Unit,
@@ -62,53 +108,6 @@ fun HomeTopBar(
             ImageVector.vectorResource(R.drawable.ic_header_search),
             null,
             tint = colors.white,
-        )
-    }
-}
-
-@Composable
-private fun HomeSegmentTab(
-    selectedTab: HomeTab,
-    onTabClick: (HomeTab) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy((-6).dp, Alignment.CenterHorizontally),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        HomeTab.entries.forEach { tab ->
-            HomeSegmentTabItem(
-                tab = tab,
-                isSelected = tab == selectedTab,
-                onTabClick = onTabClick,
-            )
-        }
-    }
-}
-
-@Composable
-private fun HomeSegmentTabItem(
-    tab: HomeTab,
-    isSelected: Boolean,
-    onTabClick: (HomeTab) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Box(
-        modifier = modifier
-            .zIndex(if (isSelected) 1f else 0f)
-            .background(
-                color = if (isSelected) colors.lime500 else colors.gray700,
-                shape = RoundedCornerShape(size = 8.dp)
-            )
-            .noRippleClickable { onTabClick(tab) }
-            .padding(horizontal = 21.dp, vertical = 6.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = tab.title,
-            style = typography.label.m12,
-            color = if (isSelected) colors.black else colors.white
         )
     }
 }
