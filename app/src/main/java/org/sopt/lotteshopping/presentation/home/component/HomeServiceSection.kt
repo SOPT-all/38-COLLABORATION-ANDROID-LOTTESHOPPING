@@ -81,6 +81,7 @@ fun HomeServiceItem(
             imageVector = ImageVector.vectorResource(id = serviceType.iconRes),
             contentDescription = serviceType.label,
             tint = colors.black,
+            modifier = Modifier.padding(all = 2.dp)
         )
 
         Spacer(modifier = Modifier.height(4.dp))
