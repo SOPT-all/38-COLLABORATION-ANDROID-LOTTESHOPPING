@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -66,6 +67,7 @@ private fun HomeBeautyBrandCircleItem(
             color = colors.gray500,
             style = typography.label.m12,
             textAlign = TextAlign.Center,
+            maxLines = 1,
         )
     }
 }
@@ -91,7 +93,7 @@ fun HomeBeautyBrandSection(
         ) {
             items(brands) { brand ->
                 HomeBeautyBrandCircleItem(
-                    beauty = brand
+                    beauty = brand,
                 )
             }
         }
