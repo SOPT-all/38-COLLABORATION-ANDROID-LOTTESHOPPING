@@ -31,7 +31,7 @@ import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.colors
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.typography
 import org.sopt.lotteshopping.core.extension.noRippleClickable
-import org.sopt.lotteshopping.data.model.brands.BeautyContentModel
+import org.sopt.lotteshopping.presentation.home.model.BeautyContentModel
 
 
 enum class HomeStoreTab(val title: String) {
