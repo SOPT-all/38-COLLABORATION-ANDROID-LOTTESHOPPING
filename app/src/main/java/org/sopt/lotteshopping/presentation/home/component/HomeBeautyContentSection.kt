@@ -41,82 +41,6 @@ enum class HomeStoreTab(val title: String) {
 
 
 @Composable
-private fun HomeBeautyContentTabItem(
-    tab: HomeStoreTab,
-    isSelected: Boolean,
-    onTabClick: (HomeStoreTab) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Box(
-        modifier = modifier
-            .background(
-                color = if (isSelected) colors.black else colors.white,
-                shape = RoundedCornerShape(size = 8.dp)
-            )
-            .noRippleClickable { onTabClick(tab) }
-            .padding(horizontal = 8.dp, vertical = 6.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = tab.title,
-            style = typography.body.sb14,
-            color = if (isSelected) colors.white else colors.gray300
-        )
-    }
-}
-
-@Composable
-private fun HomeBeautyContentTab(
-    selectedTab: HomeStoreTab,
-    onTabClick: (HomeStoreTab) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Row(
-        modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        HomeStoreTab.entries.forEach { tab ->
-            HomeBeautyContentTabItem(
-                tab = tab,
-                isSelected = tab == selectedTab,
-                onTabClick = onTabClick,
-            )
-        }
-    }
-}
-
-@Composable
-private fun HomeBeautyContentCard(
-    @DrawableRes imageRes: Int,
-    title: String,
-    subTitle: String,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier,
-    ) {
-        Image(
-            painter = painterResource(id = imageRes),
-            contentDescription = title,
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(4.dp))
-                .aspectRatio(1f),
-            contentScale = ContentScale.Crop,
-        )
-
-        Spacer(Modifier.height(6.dp))
-
-        Text(
-            text = "$title\n$subTitle",
-            color = colors.black,
-            style = typography.body.m14,
-        )
-    }
-}
-
-
-@Composable
 fun HomeBeautyContentSection(
     contents: List<BeautyContentModel>,
     selectedTab: HomeStoreTab,
@@ -160,6 +84,84 @@ fun HomeBeautyContentSection(
         }
     }
 }
+
+@Composable
+private fun HomeBeautyContentTabItem(
+    tab: HomeStoreTab,
+    isSelected: Boolean,
+    onTabClick: (HomeStoreTab) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .background(
+                color = if (isSelected) colors.black else colors.white,
+                shape = RoundedCornerShape(size = 8.dp)
+            )
+            .noRippleClickable { onTabClick(tab) }
+            .padding(horizontal = 8.dp, vertical = 6.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = tab.title,
+            style = typography.body.sb14,
+            color = if (isSelected) colors.white else colors.gray300
+        )
+    }
+}
+
+@Composable
+private fun HomeBeautyContentTab(
+    selectedTab: HomeStoreTab,
+    onTabClick: (HomeStoreTab) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        HomeStoreTab.entries.forEach { tab ->
+            HomeBeautyContentTabItem(
+                tab = tab,
+                isSelected = tab == selectedTab,
+                onTabClick = onTabClick,
+            )
+        }
+    }
+}
+
+@Composable
+private fun HomeBeautyContentCard(
+    @DrawableRes imageRes: Int,
+    title: String,
+    subTitle: String,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+    ) {
+        Image(
+            painter = painterResource(id = imageRes),
+            contentDescription = title,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(4.dp))
+                .aspectRatio(1f),
+            contentScale = ContentScale.Crop,
+        )
+
+        Spacer(Modifier.height(6.dp))
+
+        Text(
+            text = "$title\n$subTitle",
+            color = colors.black,
+            style = typography.body.m14,
+        )
+    }
+}
+
+
 
 
 @Preview

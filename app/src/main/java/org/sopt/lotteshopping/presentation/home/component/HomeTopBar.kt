@@ -26,8 +26,13 @@ import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.colors
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.typography
 import org.sopt.lotteshopping.core.extension.noRippleClickable
-import org.sopt.lotteshopping.data.type.HomeTabType
 
+enum class HomeTabType(
+    val title: String
+) {
+    DEPARTMENT_STORE("백화점"),
+    ONLINE_MALL("온라인몰"),
+}
 
 @Composable
 private fun HomeSegmentTabItem(
