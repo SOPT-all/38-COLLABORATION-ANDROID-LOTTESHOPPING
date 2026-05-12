@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -81,6 +82,7 @@ fun HomeBeautyBrandSection(
     ) {
         Text(
             text = "이 뷰티 브랜드 어때요?",
+            modifier = Modifier.padding(start = 20.dp),
             style = typography.body.m16,
         )
 
@@ -89,6 +91,7 @@ fun HomeBeautyBrandSection(
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
+            contentPadding = PaddingValues(horizontal = 20.dp),
         ) {
             items(brands) { brand ->
                 HomeBeautyBrandCircleItem(
