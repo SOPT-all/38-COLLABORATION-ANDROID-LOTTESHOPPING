@@ -31,7 +31,6 @@ fun HomeLocationHeader(
             .fillMaxWidth()
             .background(colors.black)
             .padding(horizontal = 16.dp, vertical = 20.dp),
-        horizontalArrangement = Arrangement.spacedBy(2.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
@@ -44,7 +43,8 @@ fun HomeLocationHeader(
             color = colors.white,
             style = typography.title.sb18,
         )
-
+        Spacer(modifier = Modifier.width(2.dp))
+        
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.ic_chevron_down),
             contentDescription = null,
