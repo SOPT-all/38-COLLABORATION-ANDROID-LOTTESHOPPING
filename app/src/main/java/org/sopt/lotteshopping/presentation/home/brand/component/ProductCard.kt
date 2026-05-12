@@ -1,26 +1,31 @@
 package org.sopt.lotteshopping.presentation.home.brand.component
 
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 
 @Composable
 fun ProductCard(
+    @DrawableRes imageRes: Int,
     title: String,
     date: String,
     modifier: Modifier = Modifier,
@@ -28,14 +33,17 @@ fun ProductCard(
     allStoreBadgeLabel: String = "백화점 전점",
 ) {
     Column(
-        modifier = modifier.width(155.dp),
+        modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
-        Box(
+        Image(
+            painter = painterResource(imageRes),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(155.dp)
-                .clip(RoundedCornerShape(4.dp))
-                .background(LotteTheme.colors.gray50),
+                .fillMaxWidth()
+                .aspectRatio(1f)
+                .clip(RoundedCornerShape(4.dp)),
         )
 
         Column(
@@ -101,8 +109,10 @@ private fun AllStoreBadge(
 private fun ProductCardPreview() {
     LOTTESHOPPINGTheme {
         ProductCard(
+            imageRes = R.drawable.ic_launcher_background,
             title = "[뷰티] 7.5~10% 금액할인권",
             date = "4.23(목) ~ 5.6(수)",
+            modifier = Modifier.width(155.dp),
         )
     }
 }
