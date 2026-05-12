@@ -35,7 +35,7 @@ class HomeTopBannerState(
                 while (true) {
                     delay(autoScrollDelay)
                     if (pagerState.pageCount > 0) {
-                        val nextPage = pagerState.currentPage + 1
+                        val nextPage = (pagerState.currentPage + 1) % pagerState.pageCount
                         pagerState.animateScrollToPage(nextPage)
                     }
                 }
