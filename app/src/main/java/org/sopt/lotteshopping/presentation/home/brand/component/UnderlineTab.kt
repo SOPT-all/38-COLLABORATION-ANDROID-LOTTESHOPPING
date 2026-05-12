@@ -2,9 +2,11 @@ package org.sopt.lotteshopping.presentation.home.brand.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,6 +33,7 @@ fun UnderlineTab(
 ) {
     Column(
         modifier = modifier
+            .width(IntrinsicSize.Max)
             .semantics(mergeDescendants = true) {
                 role = Role.Tab
                 this.selected = selected
@@ -43,6 +46,7 @@ fun UnderlineTab(
             text = label,
             color = if (selected) LotteTheme.colors.black else LotteTheme.colors.gray300,
             style = LotteTheme.typography.body.m14,
+            maxLines = 1,
             textAlign = TextAlign.Center,
         )
 
