@@ -1,17 +1,16 @@
 package org.sopt.lotteshopping.presentation.home.brand.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
@@ -47,17 +46,15 @@ fun UnderlineTab(
             textAlign = TextAlign.Center,
         )
 
-        Box(
+        HorizontalDivider(
             modifier = Modifier
-                .width(if (selected) 74.dp else 28.dp)
-                .height(2.dp)
-                .background(
-                    if (selected) {
-                        LotteTheme.colors.black
-                    } else {
-                        LotteTheme.colors.white
-                    },
-                ),
+                .fillMaxWidth(),
+            thickness = 2.dp,
+            color = if (selected) {
+                LotteTheme.colors.black
+            } else {
+                Color.Transparent
+            },
         )
     }
 }
