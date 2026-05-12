@@ -46,7 +46,7 @@ fun HomeTopBar(
             .fillMaxWidth()
             .background(colors.black)
             .padding(vertical = 10.dp, horizontal = 12.dp),
-        horizontalArrangement = Arrangement.spacedBy(space = 57.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
