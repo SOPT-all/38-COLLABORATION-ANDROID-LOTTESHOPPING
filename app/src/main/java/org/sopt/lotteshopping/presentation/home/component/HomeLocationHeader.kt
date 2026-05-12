@@ -65,7 +65,7 @@ fun HomeLocationHeader(
 }
 
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 private fun HomeLocationHeaderPreview(
 ) {

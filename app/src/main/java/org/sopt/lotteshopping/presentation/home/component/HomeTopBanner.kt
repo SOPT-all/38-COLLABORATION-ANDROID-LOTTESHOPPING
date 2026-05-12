@@ -88,7 +88,7 @@ fun HomeTopBanner(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 private fun HomeTopBannerPreview() {
     LOTTESHOPPINGTheme {
