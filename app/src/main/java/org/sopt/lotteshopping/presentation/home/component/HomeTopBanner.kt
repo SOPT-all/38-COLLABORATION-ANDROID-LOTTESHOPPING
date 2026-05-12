@@ -74,7 +74,7 @@ fun HomeTopBanner(
             state = state.pagerState,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(364f / 174f),
+                .aspectRatio(360f / 174f),
         ) { page ->
             val index = page % banners.size
             UrlImage(
