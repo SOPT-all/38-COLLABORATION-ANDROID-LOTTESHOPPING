@@ -18,32 +18,32 @@ enum class MainTab(
     val route: MainTabRoute,
 ) {
     HOME(
-        selectedIconRes = R.drawable.ic_launcher_background,
-        unselectedIconRes = R.drawable.ic_launcher_background,
+        selectedIconRes = R.drawable.ic_nav_home_selected,
+        unselectedIconRes = R.drawable.ic_nav_home_unselected,
         titleRes = R.string.home,
         route = Home,
     ),
     PLACE(
-        selectedIconRes = R.drawable.ic_launcher_background,
-        unselectedIconRes = R.drawable.ic_launcher_background,
+        selectedIconRes = R.drawable.ic_nav_place_selected,
+        unselectedIconRes = R.drawable.ic_nav_place_unselected,
         titleRes = R.string.place,
         route = Place,
     ),
     PAY(
-        selectedIconRes = R.drawable.ic_launcher_background,
-        unselectedIconRes = R.drawable.ic_launcher_background,
+        selectedIconRes = R.drawable.ic_nav_pay_selected,
+        unselectedIconRes = R.drawable.ic_nav_pay_unselected,
         titleRes = R.string.pay,
         route = Pay,
     ),
     SHOPPING(
-        selectedIconRes = R.drawable.ic_launcher_background,
-        unselectedIconRes = R.drawable.ic_launcher_background,
+        selectedIconRes = R.drawable.ic_nav_shopping_selected,
+        unselectedIconRes = R.drawable.ic_nav_shopping_unselected,
         titleRes = R.string.shopping,
         route = Shopping,
     ),
     MY(
-        selectedIconRes = R.drawable.ic_launcher_background,
-        unselectedIconRes = R.drawable.ic_launcher_background,
+        selectedIconRes = R.drawable.ic_nav_my_selected,
+        unselectedIconRes = R.drawable.ic_nav_my_unselected,
         titleRes = R.string.my,
         route = My,
     );

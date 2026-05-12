@@ -26,8 +26,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
-import org.sopt.lotteshopping.core.extension.noRippleClickable
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
+import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
+import org.sopt.lotteshopping.core.extension.noRippleClickable
 
 //TODO 디자인 시안에 맞추어 수정
 @Composable
@@ -45,14 +46,14 @@ fun MainBottomBar(
                 Modifier
                     .fillMaxWidth()
                     .height(1.dp)
-                    .background(color = Color.Black),
+                    .background(color= LotteTheme.colors.gray50)
         )
 
         Row(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .background(color = Color.Black)
+                    .background(color= LotteTheme.colors.gray50)
                     .padding(
                         start = 14.dp,
                         top = 4.dp,
@@ -65,7 +66,7 @@ fun MainBottomBar(
                 val selectedIcon =
                     if (tab == currentTab) tab.selectedIconRes else tab.unselectedIconRes
                 val selectedColor =
-                    if (tab == currentTab) Color.Blue else Color.Red
+                    if (tab == currentTab) LotteTheme.colors.black else LotteTheme.colors.gray400
 
                 MainNavigationBarItem(
                     tab = tab,
@@ -108,6 +109,7 @@ private fun MainNavigationBarItem(
         Text(
             text = stringResource(tab.titleRes),
             color = selectedColor,
+            style = LotteTheme.typography.caption.r10
         )
     }
 }
