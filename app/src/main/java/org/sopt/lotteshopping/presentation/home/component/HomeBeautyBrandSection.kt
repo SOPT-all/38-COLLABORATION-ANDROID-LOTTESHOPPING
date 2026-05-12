@@ -30,6 +30,37 @@ import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.colors
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.typography
 import org.sopt.lotteshopping.core.extension.noRippleClickable
 import org.sopt.lotteshopping.data.model.brands.BeautyBrandModel
+@Composable
+fun HomeBeautyBrandSection(
+    brands: List<BeautyBrandModel>,
+    onBrandClick: (BeautyBrandModel) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier.fillMaxWidth()
+    ) {
+        Text(
+            text = "이 뷰티 브랜드 어때요?",
+            modifier = Modifier.padding(start = 20.dp),
+            style = typography.body.m16,
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        LazyRow(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            contentPadding = PaddingValues(horizontal = 20.dp),
+        ) {
+            items(brands) { brand ->
+                HomeBeautyBrandCircleItem(
+                    beauty = brand,
+                    onBrandClick = onBrandClick
+                )
+            }
+        }
+    }
+}
 
 @Composable
 private fun HomeBeautyBrandCircleItem(
@@ -70,38 +101,6 @@ private fun HomeBeautyBrandCircleItem(
             style = typography.label.m12,
             textAlign = TextAlign.Center,
         )
-    }
-}
-
-@Composable
-fun HomeBeautyBrandSection(
-    brands: List<BeautyBrandModel>,
-    onBrandClick: (BeautyBrandModel) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier.fillMaxWidth()
-    ) {
-        Text(
-            text = "이 뷰티 브랜드 어때요?",
-            modifier = Modifier.padding(start = 20.dp),
-            style = typography.body.m16,
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        LazyRow(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            contentPadding = PaddingValues(horizontal = 20.dp),
-        ) {
-            items(brands) { brand ->
-                HomeBeautyBrandCircleItem(
-                    beauty = brand,
-                    onBrandClick = onBrandClick
-                )
-            }
-        }
     }
 }
 
