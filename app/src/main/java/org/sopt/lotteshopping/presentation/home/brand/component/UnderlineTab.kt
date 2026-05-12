@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
@@ -40,26 +39,24 @@ fun UnderlineTab(
             }
             .noRippleClickable(onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         Text(
             text = label,
+            modifier = Modifier.padding(bottom = if (selected) 10.dp else 12.dp),
             color = if (selected) LotteTheme.colors.black else LotteTheme.colors.gray300,
             style = LotteTheme.typography.body.m14,
             maxLines = 1,
             textAlign = TextAlign.Center,
         )
 
-        HorizontalDivider(
-            modifier = Modifier
-                .fillMaxWidth(),
-            thickness = 2.dp,
-            color = if (selected) {
-                LotteTheme.colors.black
-            } else {
-                Color.Transparent
-            },
-        )
+        if (selected) {
+            HorizontalDivider(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                thickness = 2.dp,
+                color = LotteTheme.colors.black,
+            )
+        }
     }
 }
 
