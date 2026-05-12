@@ -1,7 +1,6 @@
 package org.sopt.lotteshopping.presentation.home.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -44,7 +43,7 @@ fun HomeLocationHeader(
             style = typography.title.sb18,
         )
         Spacer(modifier = Modifier.width(2.dp))
-        
+
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.ic_chevron_down),
             contentDescription = null,
