@@ -28,6 +28,7 @@ import org.sopt.lotteshopping.core.designsystem.component.UrlImage
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.colors
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.typography
+import org.sopt.lotteshopping.core.extension.noRippleClickable
 import org.sopt.lotteshopping.data.model.brands.BeautyBrandModel
 
 @Composable
@@ -37,7 +38,7 @@ private fun HomeBeautyBrandCircleItem(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier.noRippleClickable { onBrandClick(beauty) },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(
