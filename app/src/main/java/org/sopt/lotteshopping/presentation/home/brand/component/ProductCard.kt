@@ -58,21 +58,16 @@ fun ProductCard(
                 overflow = TextOverflow.Ellipsis,
             )
 
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                Text(
-                    text = date,
-                    color = LotteTheme.colors.gray400,
-                    style = LotteTheme.typography.caption.r10,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
+            Text(
+                text = date,
+                color = LotteTheme.colors.gray400,
+                style = LotteTheme.typography.caption.r10,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
 
-                if (showAllStoreBadge) {
-                    AllStoreBadge(label = allStoreBadgeLabel)
-                }
+            if (showAllStoreBadge) {
+                AllStoreBadge(label = allStoreBadgeLabel)
             }
         }
     }
