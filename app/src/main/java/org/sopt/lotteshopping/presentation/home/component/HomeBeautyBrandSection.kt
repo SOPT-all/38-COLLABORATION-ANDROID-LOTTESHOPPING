@@ -67,7 +67,6 @@ private fun HomeBeautyBrandCircleItem(
             color = colors.gray500,
             style = typography.label.m12,
             textAlign = TextAlign.Center,
-            maxLines = 1,
         )
     }
 }

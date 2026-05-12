@@ -76,7 +76,6 @@ fun HomeServiceItem(
             style = typography.label.m12,
             color = colors.black,
             textAlign = TextAlign.Center,
-            maxLines = 1
         )
     }
 }
