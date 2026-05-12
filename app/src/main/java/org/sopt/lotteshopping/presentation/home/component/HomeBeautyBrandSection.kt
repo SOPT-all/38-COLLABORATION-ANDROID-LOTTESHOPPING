@@ -33,6 +33,7 @@ import org.sopt.lotteshopping.data.model.brands.BeautyBrandModel
 @Composable
 private fun HomeBeautyBrandCircleItem(
     beauty: BeautyBrandModel,
+    onBrandClick: (BeautyBrandModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -74,6 +75,7 @@ private fun HomeBeautyBrandCircleItem(
 @Composable
 fun HomeBeautyBrandSection(
     brands: List<BeautyBrandModel>,
+    onBrandClick: (BeautyBrandModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -95,6 +97,7 @@ fun HomeBeautyBrandSection(
             items(brands) { brand ->
                 HomeBeautyBrandCircleItem(
                     beauty = brand,
+                    onBrandClick = onBrandClick
                 )
             }
         }
@@ -115,6 +118,9 @@ private fun HomeBeautyBrandSectionPreview() {
             BeautyBrandModel(6L, "나", ""),
             BeautyBrandModel(7L, "스", "")
         )
-        HomeBeautyBrandSection(brands = mockBrands)
+        HomeBeautyBrandSection(
+            brands = mockBrands,
+            onBrandClick = {}
+        )
     }
 }
