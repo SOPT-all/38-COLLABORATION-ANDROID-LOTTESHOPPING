@@ -21,43 +21,6 @@ import org.sopt.lotteshopping.core.designsystem.component.UrlImage
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.data.model.banners.HomeTopBannerModel
 
-
-class HomeTopBannerState(
-    val pagerState: PagerState,
-    private val autoScrollDelay: Long = 5000L
-) {
-    @Composable
-    fun HandleAutoScroll() {
-        val isDragged by pagerState.interactionSource.collectIsDraggedAsState()
-
-        LaunchedEffect(isDragged) {
-            if (!isDragged) {
-                while (true) {
-                    delay(autoScrollDelay)
-                    if (pagerState.pageCount > 0) {
-                        val nextPage = (pagerState.currentPage + 1) % pagerState.pageCount
-                        pagerState.animateScrollToPage(nextPage)
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun rememberHomeTopBannerState(
-    banners: List<HomeTopBannerModel>,
-    autoScrollDelay: Long = 5000L
-): HomeTopBannerState {
-    val pagerState = rememberPagerState(
-        initialPage = if (banners.isEmpty()) 0 else (Int.MAX_VALUE / 2) - (Int.MAX_VALUE / 2 % banners.size),
-        pageCount = { if (banners.isEmpty()) 0 else Int.MAX_VALUE }
-    )
-    return remember(pagerState) {
-        HomeTopBannerState(pagerState, autoScrollDelay)
-    }
-}
-
 @Composable
 fun HomeTopBanner(
     banners: List<HomeTopBannerModel>,
@@ -87,6 +50,44 @@ fun HomeTopBanner(
         }
     }
 }
+
+class HomeTopBannerState(
+    val pagerState: PagerState,
+    private val autoScrollDelay: Long = 5000L
+) {
+    @Composable
+    fun HandleAutoScroll() {
+        val isDragged by pagerState.interactionSource.collectIsDraggedAsState()
+
+        LaunchedEffect(isDragged) {
+            if (!isDragged) {
+                while (true) {
+                    delay(autoScrollDelay)
+                    if (pagerState.pageCount > 0) {
+                        val nextPage = (pagerState.currentPage + 1) % pagerState.pageCount
+                        pagerState.animateScrollToPage(nextPage)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@Composable
+private fun rememberHomeTopBannerState(
+    banners: List<HomeTopBannerModel>,
+    autoScrollDelay: Long = 5000L
+): HomeTopBannerState {
+    val pagerState = rememberPagerState(
+        initialPage = if (banners.isEmpty()) 0 else (Int.MAX_VALUE / 2) - (Int.MAX_VALUE / 2 % banners.size),
+        pageCount = { if (banners.isEmpty()) 0 else Int.MAX_VALUE }
+    )
+    return remember(pagerState) {
+        HomeTopBannerState(pagerState, autoScrollDelay)
+    }
+}
+
 
 @Preview
 @Composable
