@@ -50,7 +50,7 @@ fun HomeTopBar(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
-            ImageVector.vectorResource(R.drawable.ic_header_menu),
+            imageVector = ImageVector.vectorResource(R.drawable.ic_header_menu),
             null,
             tint = colors.white,
         )
@@ -62,12 +62,13 @@ fun HomeTopBar(
         )
 
         Icon(
-            ImageVector.vectorResource(R.drawable.ic_header_search),
+            imageVector = ImageVector.vectorResource(R.drawable.ic_header_search),
             null,
             tint = colors.white,
         )
     }
 }
+
 @Composable
 private fun HomeSegmentTabItem(
     tab: HomeTabType,
