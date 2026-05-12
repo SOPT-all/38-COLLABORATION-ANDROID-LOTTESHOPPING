@@ -35,7 +35,12 @@ fun HomeLocationHeader(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = "백화점 노원점",
+            text = "백화점",
+            color = colors.white,
+            style = typography.title.m18,
+        )
+        Text(
+            text = " 노원점",
             color = colors.white,
             style = typography.title.sb18,
         )
