@@ -71,7 +71,6 @@ private fun TilePreview() {
     LOTTESHOPPINGTheme {
         Box(
             modifier = Modifier
-                .fillMaxSize()
                 .background(LotteTheme.colors.white)
                 .padding(24.dp),
         ) {
