@@ -13,9 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 
 @Composable
 fun BannerCard(
@@ -46,10 +45,8 @@ fun BannerCard(
             text = title,
             modifier = Modifier
                 .padding(horizontal = 14.dp),
-            fontWeight = FontWeight.Medium,
-            fontSize = 14.sp,
-            color = Color.Black
-
+            style = LotteTheme.typography.body.m14,
+            color = LotteTheme.colors.black
         )
 
         Spacer(modifier = Modifier.height(6.dp))
@@ -58,23 +55,20 @@ fun BannerCard(
             modifier = Modifier
                 .padding(horizontal = 14.dp),
             text = location,
-            fontSize = 12.sp,
-            color = Color(0xFF797979),
+            style = LotteTheme.typography.label.r12,
+            color = LotteTheme.colors.gray400
         )
 
         Spacer(modifier = Modifier.height(2.dp))
 
         Text(
-
             modifier = Modifier
                 .padding(bottom = 24.dp)
                 .padding(horizontal = 14.dp),
             text = date,
-            fontSize = 12.sp,
-            color = Color(0xFF797979)
-
+            style = LotteTheme.typography.label.r12,
+            color = LotteTheme.colors.gray400
         )
-
     }
 
 }

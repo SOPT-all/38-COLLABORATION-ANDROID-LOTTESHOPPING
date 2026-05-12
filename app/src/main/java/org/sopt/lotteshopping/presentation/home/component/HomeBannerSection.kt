@@ -14,11 +14,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.data.bannerItems
 
 
@@ -27,7 +25,7 @@ fun HomeBannerSection() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.Black)
+            .background(LotteTheme.colors.black)
             .wrapContentHeight()
     )
     {
@@ -36,9 +34,9 @@ fun HomeBannerSection() {
                 .padding(top = 24.dp, bottom = 4.dp)
                 .padding(start = 14.dp),
             text = "취향 확장",
-            color = Color.White,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 18.sp
+            color = LotteTheme.colors.white,
+            style = LotteTheme.typography.title.sb18
+
         )
 
         Text(
@@ -46,7 +44,8 @@ fun HomeBannerSection() {
                 .padding(start = 14.dp)
                 .padding(top = 4.dp),
             text = "나의 세계를 넓히는 감각적인 제안",
-            color = Color(0xFFD9D9D9)
+            color = LotteTheme.colors.gray300,
+            style = LotteTheme.typography.body.r14
         )
 
         Spacer(modifier = Modifier.height(16.dp))

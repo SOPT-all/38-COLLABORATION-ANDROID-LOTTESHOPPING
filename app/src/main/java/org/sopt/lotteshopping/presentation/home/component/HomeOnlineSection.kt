@@ -15,13 +15,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import org.sopt.lotteshopping.R
+import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.data.onlineMallItems
 
 
@@ -31,7 +29,7 @@ fun HomeOnlineSection() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.White)
+            .background(LotteTheme.colors.white)
     ) {
 
         Row(
@@ -44,8 +42,8 @@ fun HomeOnlineSection() {
 
         ) {
             Text(text = "온라인몰",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.ExtraBold)
+            color= LotteTheme.colors.black,
+            style= LotteTheme.typography.title.sb18)
 
             Icon (
                 painter = painterResource(id = R.drawable.ic_chevron_right),
@@ -56,7 +54,7 @@ fun HomeOnlineSection() {
         }
 
         HorizontalDivider(
-            color = Color(0xFFECEDED),
+            color = LotteTheme.colors.gray100,
             thickness = 1.dp
         )
 
