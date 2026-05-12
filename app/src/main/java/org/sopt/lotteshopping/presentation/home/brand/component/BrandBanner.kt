@@ -1,4 +1,4 @@
-package org.sopt.lotteshopping.presentation.brand.component
+package org.sopt.lotteshopping.presentation.home.brand.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
