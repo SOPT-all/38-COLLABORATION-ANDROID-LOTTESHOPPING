@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -47,7 +49,8 @@ fun ShoppingHighlightSection(
                 UrlImage(
                     modifier = Modifier
                         .clip(RoundedCornerShape(4.dp))
-                        .size(width = 300.dp, height = 250.dp),
+                        .width(300.dp)
+                        .aspectRatio(300f/250f),
                     url = banner.imageUrl,
                     placeholderDrawable = R.drawable.ic_launcher_background,
                     contentScale = ContentScale.Crop,
