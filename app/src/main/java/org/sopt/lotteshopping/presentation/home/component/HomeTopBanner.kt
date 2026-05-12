@@ -93,9 +93,9 @@ fun HomeTopBanner(
 private fun HomeTopBannerPreview() {
     LOTTESHOPPINGTheme {
         val mockBanners = listOf(
-            HomeTopBannerModel(1L, ""),
-            HomeTopBannerModel(2L, ""),
-            HomeTopBannerModel(3L, "")
+            HomeTopBannerModel(1L, 1, ""),
+            HomeTopBannerModel(2L, 2, ""),
+            HomeTopBannerModel(3L, 3, "")
         )
         HomeTopBanner(banners = mockBanners)
     }
