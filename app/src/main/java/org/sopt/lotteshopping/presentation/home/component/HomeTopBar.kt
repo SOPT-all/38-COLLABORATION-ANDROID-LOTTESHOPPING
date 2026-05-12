@@ -34,6 +34,40 @@ enum class HomeTabType(
     ONLINE_MALL("온라인몰"),
 }
 
+
+@Composable
+fun HomeTopBar(
+    selectedTab: HomeTabType,
+    onTabClick: (HomeTabType) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(colors.black)
+            .padding(vertical = 13.dp, horizontal = 12.dp),
+        horizontalArrangement = Arrangement.spacedBy(space = 57.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            ImageVector.vectorResource(R.drawable.ic_header_menu),
+            null,
+            tint = colors.white,
+        )
+
+        HomeSegmentTab(
+            selectedTab = selectedTab,
+            onTabClick = onTabClick,
+            modifier = Modifier.weight(1f)
+        )
+
+        Icon(
+            ImageVector.vectorResource(R.drawable.ic_header_search),
+            null,
+            tint = colors.white,
+        )
+    }
+}
 @Composable
 private fun HomeSegmentTabItem(
     tab: HomeTabType,
@@ -78,40 +112,6 @@ private fun HomeSegmentTab(
                 onTabClick = onTabClick,
             )
         }
-    }
-}
-
-@Composable
-fun HomeTopBar(
-    selectedTab: HomeTabType,
-    onTabClick: (HomeTabType) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(colors.black)
-            .padding(vertical = 13.dp, horizontal = 12.dp),
-        horizontalArrangement = Arrangement.spacedBy(space = 57.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Icon(
-            ImageVector.vectorResource(R.drawable.ic_header_menu),
-            null,
-            tint = colors.white,
-        )
-
-        HomeSegmentTab(
-            selectedTab = selectedTab,
-            onTabClick = onTabClick,
-            modifier = Modifier.weight(1f)
-        )
-
-        Icon(
-            ImageVector.vectorResource(R.drawable.ic_header_search),
-            null,
-            tint = colors.white,
-        )
     }
 }
 
