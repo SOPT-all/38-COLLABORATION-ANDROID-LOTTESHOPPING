@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -63,7 +64,7 @@ private fun HomeUserInfoButton(
             .border(
                 width = 0.5.dp,
                 color = colors.gray600,
-                shape = RoundedCornerShape(size = 99.dp)
+                shape = CircleShape,
             )
             .padding(vertical = 4.dp)
             .padding(start = 14.dp, end = 4.dp),
