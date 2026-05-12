@@ -26,17 +26,14 @@ import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.colors
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.typography
 import org.sopt.lotteshopping.core.extension.noRippleClickable
+import org.sopt.lotteshopping.data.type.HomeTabType
 
-enum class HomeTab(val title: String) {
-    DEPARTMENT_STORE("백화점"),
-    ONLINE_MALL("온라인몰")
-}
 
 @Composable
 private fun HomeSegmentTabItem(
-    tab: HomeTab,
+    tab: HomeTabType,
     isSelected: Boolean,
-    onTabClick: (HomeTab) -> Unit,
+    onTabClick: (HomeTabType) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -57,10 +54,11 @@ private fun HomeSegmentTabItem(
         )
     }
 }
+
 @Composable
 private fun HomeSegmentTab(
-    selectedTab: HomeTab,
-    onTabClick: (HomeTab) -> Unit,
+    selectedTab: HomeTabType,
+    onTabClick: (HomeTabType) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -68,7 +66,7 @@ private fun HomeSegmentTab(
         horizontalArrangement = Arrangement.spacedBy((-6).dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        HomeTab.entries.forEach { tab ->
+        HomeTabType.entries.forEach { tab ->
             HomeSegmentTabItem(
                 tab = tab,
                 isSelected = tab == selectedTab,
@@ -80,8 +78,8 @@ private fun HomeSegmentTab(
 
 @Composable
 fun HomeTopBar(
-    selectedTab: HomeTab,
-    onTabClick: (HomeTab) -> Unit,
+    selectedTab: HomeTabType,
+    onTabClick: (HomeTabType) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -116,7 +114,7 @@ fun HomeTopBar(
 @Composable
 private fun HomeTopBarPreview() {
     LOTTESHOPPINGTheme {
-        var selectedTab by remember { mutableStateOf(HomeTab.DEPARTMENT_STORE) }
+        var selectedTab by remember { mutableStateOf(HomeTabType.DEPARTMENT_STORE) }
 
         HomeTopBar(
             selectedTab = selectedTab,

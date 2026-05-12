@@ -1,6 +1,5 @@
 package org.sopt.lotteshopping.presentation.home.component
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -24,23 +22,10 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.colors
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.typography
-
-enum class HomeServiceType(
-    @get:DrawableRes val iconRes: Int,
-    val label: String,
-) {
-    RESERVATION(R.drawable.ic_home_reservation, "예약"),
-    BRANCH_INFO(R.drawable.ic_home_coupon, "쿠폰"),
-    CULTURE_CENTER(R.drawable.ic_home_floor, "층별안내"),
-    WEDDING(R.drawable.ic_home_car, "주차"),
-    GIFT_CARD(R.drawable.ic_home_receipt, "영수증"),
-    COUPON(R.drawable.ic_home_gift, "사은"),
-    AI_CHATBOT(R.drawable.ic_home_ai, "AI 챗봇"),
-}
+import org.sopt.lotteshopping.data.type.HomeServiceType
 
 @Composable
 fun HomeServiceSection(
