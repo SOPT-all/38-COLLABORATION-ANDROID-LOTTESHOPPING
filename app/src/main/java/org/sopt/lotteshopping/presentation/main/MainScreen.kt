@@ -1,5 +1,9 @@
 package org.sopt.lotteshopping.presentation.main
 
+import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.compose.LocalActivity
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -11,8 +15,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntOffset
 import androidx.navigation.compose.NavHost
 import kotlinx.collections.immutable.toImmutableList
@@ -24,6 +28,7 @@ import org.sopt.lotteshopping.presentation.main.component.MainTab
 import org.sopt.lotteshopping.presentation.my.navigation.myGraph
 import org.sopt.lotteshopping.presentation.pay.payGraph
 import org.sopt.lotteshopping.presentation.shopping.navigation.shoppingGraph
+import android.graphics.Color as AndroidColor
 
 private val mainTabs = MainTab.entries.toImmutableList()
 
@@ -31,6 +36,26 @@ private val mainTabs = MainTab.entries.toImmutableList()
 fun MainScreen(
     navigator: MainNavigator = rememberMainNavigator(),
 ) {
+    val activity = LocalActivity.current as? ComponentActivity
+    val currentTab = navigator.currentTab
+
+    LaunchedEffect(currentTab) {
+        activity?.let {
+            if (currentTab == MainTab.HOME) {
+                it.enableEdgeToEdge(
+                    statusBarStyle = SystemBarStyle.dark(AndroidColor.BLACK),
+                )
+            } else {
+                it.enableEdgeToEdge(
+                    statusBarStyle = SystemBarStyle.light(
+                        AndroidColor.TRANSPARENT,
+                        AndroidColor.TRANSPARENT,
+                    )
+                )
+            }
+        }
+    }
+
     Scaffold(
         bottomBar = {
             AnimatedVisibility(
@@ -46,8 +71,6 @@ fun MainScreen(
                 )
             }
         },
-        //TODO DS 세팅 후 변경
-        containerColor = Color.White,
     ) { innerPadding ->
         MainNavHost(
             navigator = navigator,
@@ -75,6 +98,7 @@ private fun MainNavHost(
         )
 
         brandGraph(navigateUp = navigator::navigateUp)
+
         payGraph()
 
         shoppingGraph()
