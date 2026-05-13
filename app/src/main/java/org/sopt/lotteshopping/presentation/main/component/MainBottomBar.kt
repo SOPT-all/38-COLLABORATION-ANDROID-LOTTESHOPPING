@@ -29,7 +29,7 @@ import kotlinx.collections.immutable.toImmutableList
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.core.extension.noRippleClickable
-
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun MainBottomBar(
@@ -57,6 +57,7 @@ fun MainBottomBar(
                 onClick = { onTabSelected(tab) },
                 selectedIcon = selectedIcon,
                 selectedColor = selectedColor,
+                modifier = Modifier.weight(1f),
             )
         }
     }
@@ -83,24 +84,24 @@ private fun MainNavigationBarItem(
             Spacer(modifier = Modifier.height(15.dp))
             Icon(
                 imageVector = ImageVector.vectorResource(selectedIcon),
-                contentDescription = tab.title,
+                contentDescription = tab.titleRes,
                 tint = selectedColor,
                 modifier = Modifier.size(24.dp)
             )
             Text(
-                text = tab.title,
+                text = tab.titleRes,
                 color = selectedColor,
                 style = LotteTheme.typography.caption.r10
             )
         } else {
             Icon(
                 imageVector = ImageVector.vectorResource(selectedIcon),
-                contentDescription = tab.title,
+                contentDescription = tab.titleRes,
                 tint = selectedColor,
                 modifier = Modifier.size(24.dp)
             )
             Text(
-                text = tab.title,
+                text = tab.titleRes,
                 color = selectedColor,
                 style = LotteTheme.typography.caption.r10
             )
