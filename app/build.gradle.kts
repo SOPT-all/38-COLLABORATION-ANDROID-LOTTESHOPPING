@@ -55,7 +55,6 @@ kotlin {
 }
 
 dependencies {
-    implementation(libs.androidx.compose.foundation.layout)
     // Androidx
     implementation(libs.bundles.androidx.core)
 
