@@ -51,7 +51,9 @@ fun HomeServiceSection(
             .background(colors.white),
     ) {
         LazyRow(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 14.dp),
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
