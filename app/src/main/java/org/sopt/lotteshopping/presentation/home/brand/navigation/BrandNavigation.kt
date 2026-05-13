@@ -9,8 +9,9 @@ import org.sopt.lotteshopping.core.common.naviagtion.Route
 import org.sopt.lotteshopping.presentation.home.brand.BrandRoute
 
 fun NavController.navigateToBrand(
+    brandId: Long,
     navOptions: NavOptions? = null,
-) = navigate(Brand, navOptions)
+) = navigate(Brand(brandId), navOptions)
 
 fun NavGraphBuilder.brandGraph(
     navigateUp: () -> Unit,
@@ -21,4 +22,4 @@ fun NavGraphBuilder.brandGraph(
 }
 
 @Serializable
-data object Brand : Route
+data class Brand(val id: Long) : Route
