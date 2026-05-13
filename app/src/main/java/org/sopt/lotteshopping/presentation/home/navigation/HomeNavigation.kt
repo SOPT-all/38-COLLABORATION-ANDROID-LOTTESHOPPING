@@ -14,11 +14,14 @@ fun NavController.navigateToHome(
 ) = navigate(Home, navOptions)
 
 fun NavGraphBuilder.homeGraph(
-    navigateToBrand: () -> Unit,
+    navigateToBrand: (Long) -> Unit,
     innerPadding: PaddingValues,
 ) {
     composable<Home> {
-        HomeRoute()
+        HomeRoute(
+            paddingValues = innerPadding,
+            navigateToBrand = navigateToBrand,
+        )
     }
 }
 
