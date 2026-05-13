@@ -55,6 +55,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(libs.androidx.compose.ui.text)
     // Androidx
     implementation(libs.bundles.androidx.core)
 
