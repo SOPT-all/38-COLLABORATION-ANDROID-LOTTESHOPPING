@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.sopt.lotteshopping.R
@@ -36,7 +37,10 @@ import org.sopt.lotteshopping.data.HomeOnlineItemModel
 
 
 @Composable
-fun HomeOnlineSection(onlineItems: List<HomeOnlineItemModel>) {
+fun HomeOnlineSection(
+    onlineItems: List<HomeOnlineItemModel>,
+    modifier: Modifier = Modifier,
+) {
 
     Column(
         modifier = Modifier
@@ -47,7 +51,7 @@ fun HomeOnlineSection(onlineItems: List<HomeOnlineItemModel>) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal= 14.dp, vertical= 10.dp),
+                .padding(horizontal = 14.dp, vertical = 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
 
@@ -59,9 +63,9 @@ fun HomeOnlineSection(onlineItems: List<HomeOnlineItemModel>) {
             )
 
             Icon(
-                imageVector = ImageVector.vectorResource(id=R.drawable.ic_chevron_right),
-                contentDescription = null ,
-                tint= Color.Unspecified
+                imageVector = ImageVector.vectorResource(id = R.drawable.ic_chevron_right),
+                contentDescription = null,
+                tint = Color.Unspecified
             )
 
         }
@@ -72,6 +76,7 @@ fun HomeOnlineSection(onlineItems: List<HomeOnlineItemModel>) {
         )
 
         LazyRow(
+            modifier = Modifier.padding(14.dp, bottom = 26.dp),
             contentPadding = PaddingValues(horizontal = 14.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp)
 
@@ -80,7 +85,7 @@ fun HomeOnlineSection(onlineItems: List<HomeOnlineItemModel>) {
             items(onlineItems) { item ->
                 HomeOnlineCard(
                     imageRes = item.imageRes,
-                    label=item.label,
+                    label = item.label,
                     title = item.title
                 )
             }
@@ -100,8 +105,7 @@ private fun HomeOnlineCard(
         modifier = Modifier
             .width(130.dp)
 
-    )
-    {
+    ) {
         Image(
             painter = painterResource(id = imageRes),
             contentDescription = null,
@@ -117,14 +121,14 @@ private fun HomeOnlineCard(
             text = label,
             color = LotteTheme.colors.black,
             style = LotteTheme.typography.body.m14,
-            modifier = Modifier
         )
 
         Text(
             text = title,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
             color = LotteTheme.colors.black,
-            style = LotteTheme.typography.body.m14,
-            modifier = Modifier
+            style = LotteTheme.typography.body.m14
         )
 
     }
@@ -133,6 +137,6 @@ private fun HomeOnlineCard(
 @Preview(showBackground = true)
 @Composable
 private fun HomeOnlineSectionPreview() {
-    HomeOnlineSection(onlineItems = emptyList())
+    HomeOnlineSection(onlineItems = HomeOnlineItemModel.dummyData)
 }
 
