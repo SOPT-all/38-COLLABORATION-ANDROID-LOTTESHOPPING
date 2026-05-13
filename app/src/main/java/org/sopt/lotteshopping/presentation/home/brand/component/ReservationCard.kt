@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -93,8 +94,10 @@ private fun ReservationButton(
 ) {
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(100.dp))
-            .background(LotteTheme.colors.black)
+            .background(
+                color = LotteTheme.colors.black,
+                shape = CircleShape,
+            )
             .padding(
                 start = 14.dp,
                 top = 6.dp,
