@@ -6,10 +6,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -30,7 +30,7 @@ import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.core.extension.noRippleClickable
 
-//TODO 디자인 시안에 맞추어 수정
+
 @Composable
 fun MainBottomBar(
     tabs: ImmutableList<MainTab>,
@@ -41,26 +41,14 @@ fun MainBottomBar(
     Column(
         modifier = modifier,
     ) {
-        Box(
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .height(1.dp)
-                    .background(color= LotteTheme.colors.gray50)
-        )
 
         Row(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .background(color= LotteTheme.colors.gray50)
-                    .padding(
-                        start = 14.dp,
-                        top = 4.dp,
-                        end = 14.dp,
-                        bottom = 18.dp,
-                    ),
-            horizontalArrangement = Arrangement.SpaceAround,
+                    .background(color = LotteTheme.colors.gray50),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             tabs.forEach { tab ->
                 val selectedIcon =
@@ -73,10 +61,17 @@ fun MainBottomBar(
                     onClick = { onTabSelected(tab) },
                     selectedIcon = selectedIcon,
                     selectedColor = selectedColor,
-                    modifier = Modifier.weight(1f),
                 )
             }
         }
+
+        Box(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .height(14.dp)
+                    .background(color = LotteTheme.colors.gray50)
+        )
     }
 }
 
@@ -92,25 +87,34 @@ private fun MainNavigationBarItem(
         modifier =
             modifier
                 .semantics(mergeDescendants = true) { role = Role.Tab }
-                .size(48.dp)
+                .width(72.dp)
+                .height(68.dp)
                 .noRippleClickable(onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(
-            space = 2.dp,
-            alignment = Alignment.CenterVertically
-        ),
+        verticalArrangement = Arrangement.Center
     ) {
-        Icon(
-            imageVector = ImageVector.vectorResource(selectedIcon),
-            contentDescription = stringResource(tab.titleRes),
-            tint = Color.Unspecified,
-        )
-
-        Text(
-            text = stringResource(tab.titleRes),
-            color = selectedColor,
-            style = LotteTheme.typography.caption.r10
-        )
+        if (tab == MainTab.PAY) {
+            Spacer(modifier = Modifier.height(15.dp))
+            Icon(
+                imageVector = ImageVector.vectorResource(selectedIcon),
+                contentDescription = tab.title,
+                tint = selectedColor,
+                modifier = Modifier.size(38.dp)
+            )
+            Spacer(modifier = Modifier.height(15.dp))
+        } else {
+            Icon(
+                imageVector = ImageVector.vectorResource(selectedIcon),
+                contentDescription = tab.title,
+                tint = selectedColor,
+                modifier = Modifier.size(24.dp)
+            )
+            Text(
+                text = tab.title,
+                color = selectedColor,
+                style = LotteTheme.typography.caption.r10
+            )
+        }
     }
 }
 

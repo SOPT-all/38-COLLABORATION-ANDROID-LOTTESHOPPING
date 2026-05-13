@@ -1,7 +1,6 @@
 package org.sopt.lotteshopping.presentation.main.component
 
 import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.common.naviagtion.MainTabRoute
 import org.sopt.lotteshopping.presentation.home.navigation.Home
@@ -10,41 +9,41 @@ import org.sopt.lotteshopping.presentation.pay.Pay
 import org.sopt.lotteshopping.presentation.place.Place
 import org.sopt.lotteshopping.presentation.shopping.navigation.Shopping
 
-//TODO 아이콘 에셋 추출 후 변경
+
 enum class MainTab(
     @get:DrawableRes val selectedIconRes: Int,
     @get:DrawableRes val unselectedIconRes: Int,
-    @get:StringRes val titleRes: Int,
+    val title: String,
     val route: MainTabRoute,
 ) {
     HOME(
         selectedIconRes = R.drawable.ic_nav_home_selected,
         unselectedIconRes = R.drawable.ic_nav_home_unselected,
-        titleRes = R.string.home,
+        title = "홈",
         route = Home,
     ),
     PLACE(
         selectedIconRes = R.drawable.ic_nav_place_selected,
         unselectedIconRes = R.drawable.ic_nav_place_unselected,
-        titleRes = R.string.place,
+        title = "지점안내",
         route = Place,
     ),
     PAY(
         selectedIconRes = R.drawable.ic_nav_pay_selected,
         unselectedIconRes = R.drawable.ic_nav_pay_unselected,
-        titleRes = R.string.pay,
+        title = "",
         route = Pay,
     ),
     SHOPPING(
         selectedIconRes = R.drawable.ic_nav_shopping_selected,
         unselectedIconRes = R.drawable.ic_nav_shopping_unselected,
-        titleRes = R.string.shopping,
+        title = "쇼핑정보",
         route = Shopping,
     ),
     MY(
         selectedIconRes = R.drawable.ic_nav_my_selected,
         unselectedIconRes = R.drawable.ic_nav_my_unselected,
-        titleRes = R.string.my,
+        title = "MY",
         route = My,
     );
 
