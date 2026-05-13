@@ -1,30 +1,42 @@
 package org.sopt.lotteshopping.presentation.home.component
 
+
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
-import org.sopt.lotteshopping.data.onlineMallItems
+import org.sopt.lotteshopping.data.HomeOnlineItemModel
 
 
 @Composable
-fun HomeOnlineSection() {
+fun HomeOnlineSection(onlineItems: List<HomeOnlineItemModel>) {
 
     Column(
         modifier = Modifier
@@ -35,27 +47,28 @@ fun HomeOnlineSection() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 14.dp)
-                .padding(vertical = 10.dp),
+                .padding(horizontal= 14.dp, vertical= 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
 
         ) {
-            Text(text = "온라인몰",
-            color= LotteTheme.colors.black,
-            style= LotteTheme.typography.title.sb18)
+            Text(
+                text = "온라인몰",
+                color = LotteTheme.colors.black,
+                style = LotteTheme.typography.title.sb18
+            )
 
-            Icon (
-                painter = painterResource(id = R.drawable.ic_chevron_right),
-                contentDescription = null,
-                modifier = Modifier.padding(end = 20.dp)
+            Icon(
+                imageVector = ImageVector.vectorResource(id=R.drawable.ic_chevron_right),
+                contentDescription = null ,
+                tint= Color.Unspecified
             )
 
         }
 
         HorizontalDivider(
             color = LotteTheme.colors.gray100,
-            thickness = 1.dp
+            thickness = 0.5.dp
         )
 
         LazyRow(
@@ -64,9 +77,10 @@ fun HomeOnlineSection() {
 
         ) {
 
-            items(onlineMallItems) { item ->
+            items(onlineItems) { item ->
                 HomeOnlineCard(
                     imageRes = item.imageRes,
+                    label=item.label,
                     title = item.title
                 )
             }
@@ -76,8 +90,49 @@ fun HomeOnlineSection() {
 
 }
 
+@Composable
+private fun HomeOnlineCard(
+    imageRes: Int,
+    label: String,
+    title: String
+) {
+    Column(
+        modifier = Modifier
+            .width(130.dp)
+
+    )
+    {
+        Image(
+            painter = painterResource(id = imageRes),
+            contentDescription = null,
+            modifier = Modifier
+                .size(130.dp)
+                .clip(RoundedCornerShape(4.dp)),
+            contentScale = ContentScale.Crop
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = label,
+            color = LotteTheme.colors.black,
+            style = LotteTheme.typography.body.m14,
+            modifier = Modifier
+        )
+
+        Text(
+            text = title,
+            color = LotteTheme.colors.black,
+            style = LotteTheme.typography.body.m14,
+            modifier = Modifier
+        )
+
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
-fun HomeOnlineSectionPreview() {
-    HomeOnlineSection()
+private fun HomeOnlineSectionPreview() {
+    HomeOnlineSection(onlineItems = emptyList())
 }
+
