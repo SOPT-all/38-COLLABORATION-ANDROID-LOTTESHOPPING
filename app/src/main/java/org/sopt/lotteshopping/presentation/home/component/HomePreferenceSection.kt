@@ -18,22 +18,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
+import org.sopt.lotteshopping.core.designsystem.component.UrlImage
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.data.HomePreferenceModel
 
 
 @Composable
-fun HomePreferenceSection(preferenceItems: List<HomePreferenceModel>) {
+fun HomePreferenceSection(
+    preferenceItems: List<HomePreferenceModel>,
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .background(LotteTheme.colors.black)
     )
     {
         Text(
             modifier = Modifier
-                .padding(top = 24.dp, start= 14.dp),
+                .padding(top = 24.dp, start = 14.dp),
             text = "취향 확장",
             color = LotteTheme.colors.white,
             style = LotteTheme.typography.title.sb18
@@ -59,34 +62,36 @@ fun HomePreferenceSection(preferenceItems: List<HomePreferenceModel>) {
             items(preferenceItems) { item ->
                 HomePreferenceCard(
                     imageUrl = item.imageUrl,
-                    title= item.title,
-                    targetBranch=item.targetBranch,
-                    startDate=item.startDate.toString(),
-                    endDate= item.endDate.toString()
+                    title = item.title,
+                    targetBranch = item.targetBranch,
+                    startDate = item.startDate,
+                    endDate = item.endDate
                 )
             }
         }
     }
 
 }
+
 @Composable
 private fun HomePreferenceCard(
-    imageUrl:String,
+    imageUrl: String,
     title: String,
     targetBranch: String,
     startDate: String,
-    endDate: String
+    endDate: String,
+    modifier: Modifier = Modifier
 ) {
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .width(240.dp)
             .background(LotteTheme.colors.white)
             .padding(top = 14.dp, bottom = 24.dp)
     )
     {
-        AsyncImage(
-           model=imageUrl ,
+        UrlImage(
+            url = imageUrl,
             contentDescription = null,
             modifier = Modifier
                 .size(212.dp),
@@ -115,17 +120,16 @@ private fun HomePreferenceCard(
 
         Text(
             modifier = Modifier.padding(horizontal = 14.dp),
-            text = "$startDate~ $endDate",
+            text = "$startDate ~ $endDate",
             style = LotteTheme.typography.label.r12,
             color = LotteTheme.colors.gray400
         )
     }
-
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun HomePreferenceSectionPreview() {
-    HomePreferenceSection(preferenceItems= emptyList())
+private fun HomePreferenceSectionPreview() {
+    HomePreferenceSection(preferenceItems = emptyList())
 }
