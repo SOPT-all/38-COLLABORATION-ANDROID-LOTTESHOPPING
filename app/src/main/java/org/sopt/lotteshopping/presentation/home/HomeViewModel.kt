@@ -39,7 +39,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
 
             val mockBrands = listOf(
                 BeautyBrandModel(1L, "샤넬", ""),
-                BeautyBrandModel(2L, "디올", ""),
+                BeautyBrandModel(2L, "설화수", ""),
                 BeautyBrandModel(3L, "입생로랑", ""),
                 BeautyBrandModel(4L, "나스", ""),
                 BeautyBrandModel(5L, "라라랑", ""),
