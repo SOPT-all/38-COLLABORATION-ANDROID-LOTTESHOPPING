@@ -13,7 +13,7 @@ import org.sopt.lotteshopping.presentation.place.Place
 enum class MainTab(
     @get:DrawableRes val selectedIconRes: Int,
     @get:DrawableRes val unselectedIconRes: Int,
-    @get:StringRes val titleRes: Int,
+    @get:StringRes val titleRes : Int,
     val route: MainTabRoute,
 ) {
     HOME(
