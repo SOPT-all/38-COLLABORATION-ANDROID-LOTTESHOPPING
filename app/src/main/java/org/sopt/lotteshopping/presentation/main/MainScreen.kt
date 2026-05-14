@@ -1,9 +1,5 @@
 package org.sopt.lotteshopping.presentation.main
 
-import androidx.activity.ComponentActivity
-import androidx.activity.SystemBarStyle
-import androidx.activity.compose.LocalActivity
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -28,33 +24,20 @@ import org.sopt.lotteshopping.presentation.main.component.MainTab
 import org.sopt.lotteshopping.presentation.my.navigation.myGraph
 import org.sopt.lotteshopping.presentation.pay.payGraph
 import org.sopt.lotteshopping.presentation.shopping.navigation.shoppingGraph
-import android.graphics.Color as AndroidColor
 
 private val mainTabs = MainTab.entries.toImmutableList()
 
 @Composable
 fun MainScreen(
+    onTabChanged: (MainTab?) -> Unit,
     navigator: MainNavigator = rememberMainNavigator(),
 ) {
-    val activity = LocalActivity.current as? ComponentActivity
     val currentTab = navigator.currentTab
 
     LaunchedEffect(currentTab) {
-        activity?.let {
-            if (currentTab == MainTab.HOME) {
-                it.enableEdgeToEdge(
-                    statusBarStyle = SystemBarStyle.dark(AndroidColor.BLACK),
-                )
-            } else {
-                it.enableEdgeToEdge(
-                    statusBarStyle = SystemBarStyle.light(
-                        AndroidColor.TRANSPARENT,
-                        AndroidColor.TRANSPARENT,
-                    )
-                )
-            }
-        }
+        onTabChanged(currentTab)
     }
+
 
     Scaffold(
         bottomBar = {
