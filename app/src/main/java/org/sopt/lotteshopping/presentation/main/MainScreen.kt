@@ -77,7 +77,7 @@ private fun MainNavHost(
         brandGraph(navigateUp = navigator::navigateUp)
         payGraph()
 
-        shoppingGraph()
+        shoppingGraph(innerPadding = innerPadding)
 
         myGraph()
     }
