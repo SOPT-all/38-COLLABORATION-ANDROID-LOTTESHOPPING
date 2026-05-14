@@ -22,10 +22,8 @@ class ShoppingViewModel @Inject constructor(
     val uiState: StateFlow<ShoppingUiState> = _uiState.asStateFlow()
 
     init {
-        viewModelScope.launch {
-            getHighlights()
-            getNews()
-        }
+        getHighlights()
+        getNews()
     }
 
     private fun getHighlights() {
