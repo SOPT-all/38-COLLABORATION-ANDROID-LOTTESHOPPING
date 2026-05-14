@@ -136,6 +136,6 @@ class ShoppingViewModel @Inject constructor(
 
     fun onCategoryClick(category: NewsCategory) {
         _uiState.update { it.copy(selectedCategory = category) }
-        viewModelScope.launch { getNews(category) }
+        getNews(category)
     }
 }
