@@ -43,7 +43,7 @@ fun HomeOnlineSection(
 ) {
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .background(LotteTheme.colors.white)
     ) {

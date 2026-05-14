@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -29,7 +30,6 @@ import kotlinx.collections.immutable.toImmutableList
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.core.extension.noRippleClickable
-import androidx.compose.ui.res.stringResource
 
 @Composable
 fun MainBottomBar(
@@ -39,11 +39,10 @@ fun MainBottomBar(
     modifier: Modifier = Modifier,
 ) {
     Row(
-        modifier =
-            Modifier
-                .fillMaxWidth()
-                .background(color = LotteTheme.colors.gray50)
-                .padding(bottom = 14.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .background(color = LotteTheme.colors.gray50)
+            .padding(bottom = 14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         tabs.forEach { tab ->
@@ -72,40 +71,27 @@ private fun MainNavigationBarItem(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier =
-            modifier
-                .semantics(mergeDescendants = true) { role = Role.Tab }
-                .heightIn(min = 68.dp)
-                .noRippleClickable(onClick),
+        modifier = modifier
+            .semantics(mergeDescendants = true) { role = Role.Tab }
+            .heightIn(min = 68.dp)
+            .noRippleClickable(onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         if (tab == MainTab.PAY) {
             Spacer(modifier = Modifier.height(15.dp))
-            Icon(
-                imageVector = ImageVector.vectorResource(selectedIcon),
-                contentDescription = tab.titleRes,
-                tint = selectedColor,
-                modifier = Modifier.size(24.dp)
-            )
-            Text(
-                text = tab.titleRes,
-                color = selectedColor,
-                style = LotteTheme.typography.caption.r10
-            )
-        } else {
-            Icon(
-                imageVector = ImageVector.vectorResource(selectedIcon),
-                contentDescription = tab.titleRes,
-                tint = selectedColor,
-                modifier = Modifier.size(24.dp)
-            )
-            Text(
-                text = tab.titleRes,
-                color = selectedColor,
-                style = LotteTheme.typography.caption.r10
-            )
         }
+        Icon(
+            imageVector = ImageVector.vectorResource(selectedIcon),
+            contentDescription = stringResource(id = tab.titleRes),
+            tint = selectedColor,
+            modifier = Modifier.size(24.dp)
+        )
+        Text(
+            text = stringResource(id = tab.titleRes),
+            color = selectedColor,
+            style = LotteTheme.typography.caption.r10
+        )
     }
 }
 
