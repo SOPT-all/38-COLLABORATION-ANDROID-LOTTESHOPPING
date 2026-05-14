@@ -8,6 +8,5 @@ data class HomePreferenceModel (
     val startDate: String,
     val endDate: String,
     val imageUrl : String
-
     )
 
