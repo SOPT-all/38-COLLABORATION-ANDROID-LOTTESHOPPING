@@ -36,7 +36,6 @@ import org.sopt.lotteshopping.presentation.home.component.HomeUserInfoSection
 
 @Composable
 fun HomeRoute(
-    paddingValues: PaddingValues,
     modifier: Modifier = Modifier,
     navigateToBrand: (Long) -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
@@ -48,7 +47,7 @@ fun HomeRoute(
         onHomeTabClick = viewModel::updateHomeTab,
         onStoreTabClick = viewModel::updateStoreTab,
         onBrandClick = { brand -> navigateToBrand(brand.id) },
-        modifier = modifier.padding(paddingValues),
+        modifier = modifier,
     )
 }
 
