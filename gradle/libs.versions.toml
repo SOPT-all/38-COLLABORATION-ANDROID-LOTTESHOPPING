@@ -83,7 +83,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 
 # Logging
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
-androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text", version.ref = "uiText" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
