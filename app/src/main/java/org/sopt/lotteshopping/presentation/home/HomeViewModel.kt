@@ -3,8 +3,10 @@ package org.sopt.lotteshopping.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -18,6 +20,9 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor() : ViewModel() {
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
+
+    private val _sideEffect = MutableSharedFlow<HomeSideEffect>()
+    val sideEffect = _sideEffect.asSharedFlow()
 
     init {
         fetchHomeData()
@@ -57,5 +62,13 @@ class HomeViewModel @Inject constructor() : ViewModel() {
 
     fun updateStoreTab(tab: HomeStoreTab) {
         _uiState.update { it.copy(selectedStoreTab = tab) }
+    }
+
+    fun onBrandClick(brand: BeautyBrandModel) {
+        viewModelScope.launch {
+            if (brand.name == "설화수") {
+                _sideEffect.emit(HomeSideEffect.NavigateToBrand(brand.id))
+            }
+        }
     }
 }

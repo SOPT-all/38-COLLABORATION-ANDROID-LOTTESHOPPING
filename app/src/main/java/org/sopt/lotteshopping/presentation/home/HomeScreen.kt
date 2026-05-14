@@ -2,7 +2,6 @@ package org.sopt.lotteshopping.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -42,11 +42,18 @@ fun HomeRoute(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
+    LaunchedEffect(viewModel.sideEffect) {
+        viewModel.sideEffect.collect { effect ->
+            when (effect) {
+                is HomeSideEffect.NavigateToBrand -> navigateToBrand(effect.brandId)
+            }
+        }
+    }
     HomeScreen(
         uiState = uiState,
         onHomeTabClick = viewModel::updateHomeTab,
         onStoreTabClick = viewModel::updateStoreTab,
-        onBrandClick = { brand -> navigateToBrand(brand.id) },
+        onBrandClick = viewModel::onBrandClick,
         modifier = modifier,
     )
 }
