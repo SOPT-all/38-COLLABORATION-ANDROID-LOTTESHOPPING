@@ -99,10 +99,11 @@ fun HomeOnlineSection(
 private fun HomeOnlineCard(
     imageRes: Int,
     label: String,
-    title: String
+    title: String,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .width(130.dp)
 
     ) {
