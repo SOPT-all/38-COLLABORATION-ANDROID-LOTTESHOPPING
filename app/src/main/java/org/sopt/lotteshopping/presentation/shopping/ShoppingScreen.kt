@@ -11,11 +11,16 @@ import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.collections.immutable.persistentListOf
+import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
+import org.sopt.lotteshopping.data.model.info.HighlightModel
 import org.sopt.lotteshopping.data.model.info.NewsCategory
+import org.sopt.lotteshopping.data.model.info.NewsModel
 import org.sopt.lotteshopping.presentation.shopping.component.ShoppingCardProduct
 import org.sopt.lotteshopping.presentation.shopping.component.ShoppingChipContainer
 import org.sopt.lotteshopping.presentation.shopping.component.ShoppingHeader
@@ -86,5 +91,53 @@ private fun ShoppingScreen(
                     )
             )
         }
+    }
+}
+
+@Preview
+@Composable
+private fun ShoppingScreenPreview() {
+    val highlights = persistentListOf(
+        HighlightModel(0L, ""),
+        HighlightModel(1L, ""),
+        HighlightModel(2L, ""),
+        )
+    
+    val news = persistentListOf(
+        NewsModel(
+            id = 0L,
+            title = "[뷰티살롱] 나만을 위한 뷰티 컨설팅",
+            targetBranch = "백화점 전점",
+            startDate = "4.1(수)",
+            endDate = "4.30(목)",
+            imageUrl = ""
+        ),
+        NewsModel(
+            id = 1L,
+            title = "[뷰티살롱] 나만을 위한 뷰티 컨설팅",
+            targetBranch = "",
+            startDate = "4.1(수)",
+            endDate = "4.30(목)",
+            imageUrl = ""
+        ),
+        NewsModel(
+            id = 2L,
+            title = "[뷰티살롱] 나만을 위한 뷰티 컨설팅",
+            targetBranch = "백화점 전점",
+            startDate = "4.1(수)",
+            endDate = "4.30(목)",
+            imageUrl = ""
+        ),
+    )
+
+    LOTTESHOPPINGTheme { 
+        ShoppingScreen(
+            uiState = ShoppingUiState(
+                highlights = highlights,
+                news = news,
+            ),
+            onCategoryClick = {},
+            modifier = Modifier.background(LotteTheme.colors.white)
+        )
     }
 }
