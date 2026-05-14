@@ -8,6 +8,7 @@ import org.sopt.lotteshopping.presentation.home.navigation.Home
 import org.sopt.lotteshopping.presentation.my.navigation.My
 import org.sopt.lotteshopping.presentation.pay.Pay
 import org.sopt.lotteshopping.presentation.place.Place
+import org.sopt.lotteshopping.presentation.shopping.navigation.Shopping
 
 
 enum class MainTab(
@@ -38,7 +39,7 @@ enum class MainTab(
         selectedIconRes = R.drawable.ic_nav_shopping_selected,
         unselectedIconRes = R.drawable.ic_nav_shopping_unselected,
         titleRes= R.string.shopping,
-        route= Pay,
+        route= Shopping,
     ),
     MY(
         selectedIconRes = R.drawable.ic_nav_my_selected,
