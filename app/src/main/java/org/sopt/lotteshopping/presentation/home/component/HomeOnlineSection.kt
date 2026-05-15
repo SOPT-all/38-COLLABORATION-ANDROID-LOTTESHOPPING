@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.sopt.lotteshopping.R
+import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.presentation.home.model.HomeOnlineItemModel
 
@@ -76,12 +77,11 @@ fun HomeOnlineSection(
         )
 
         LazyRow(
-            modifier = Modifier.padding(14.dp, bottom = 26.dp),
+            modifier = Modifier.padding(top = 14.dp, bottom = 26.dp),
             contentPadding = PaddingValues(horizontal = 14.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp)
 
         ) {
-
             items(onlineItems) { item ->
                 HomeOnlineCard(
                     imageRes = item.imageRes,
@@ -137,6 +137,28 @@ private fun HomeOnlineCard(
 @Preview(showBackground = true)
 @Composable
 private fun HomeOnlineSectionPreview() {
-    HomeOnlineSection(onlineItems = emptyList())
+    LOTTESHOPPINGTheme {
+        val homeOnlineMallItems = listOf(
+            HomeOnlineItemModel(
+                imageRes = R.drawable.img_home_onlinemall1,
+                label = "[탬버린즈]",
+                title = "탬버린즈 브랜드 데이"
+            ),
+            HomeOnlineItemModel(
+                imageRes = R.drawable.img_home_onlinemall2,
+                label = "[Dyson]",
+                title = "공식스토어 리뉴얼 오픈"
+            ),
+            HomeOnlineItemModel(
+                imageRes = R.drawable.img_home_onlinemall3,
+                label = "[프리 썸머 위크]",
+                title = "여름 신상품 모음"
+            )
+        )
+
+        HomeOnlineSection(
+            onlineItems = homeOnlineMallItems,
+        )
+    }
 }
 
