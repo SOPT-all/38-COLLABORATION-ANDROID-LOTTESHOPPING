@@ -84,7 +84,7 @@ private fun MainNavHost(
 
         payGraph()
 
-        shoppingGraph()
+        shoppingGraph(innerPadding = innerPadding)
 
         myGraph()
     }

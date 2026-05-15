@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -23,6 +22,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.component.UrlImage
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
@@ -31,7 +32,7 @@ import org.sopt.lotteshopping.data.model.info.HighlightModel
 
 @Composable
 fun ShoppingHighlightSection(
-    highlights: List<HighlightModel>,
+    highlights: ImmutableList<HighlightModel>,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -89,7 +90,7 @@ private fun ActionButton(
 private fun ShoppingHighlightSectionPreview() {
     LOTTESHOPPINGTheme {
         ShoppingHighlightSection(
-            highlights = listOf(
+            highlights = persistentListOf(
                 HighlightModel(
                     id = 1L,
                     imageUrl = ""
