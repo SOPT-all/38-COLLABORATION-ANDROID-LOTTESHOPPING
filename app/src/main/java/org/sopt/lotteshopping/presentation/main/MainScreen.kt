@@ -11,8 +11,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntOffset
 import androidx.navigation.compose.NavHost
 import kotlinx.collections.immutable.toImmutableList
@@ -29,8 +29,16 @@ private val mainTabs = MainTab.entries.toImmutableList()
 
 @Composable
 fun MainScreen(
+    onTabChanged: (MainTab?) -> Unit,
     navigator: MainNavigator = rememberMainNavigator(),
 ) {
+    val currentTab = navigator.currentTab
+
+    LaunchedEffect(currentTab) {
+        onTabChanged(currentTab)
+    }
+
+
     Scaffold(
         bottomBar = {
             AnimatedVisibility(
@@ -46,8 +54,6 @@ fun MainScreen(
                 )
             }
         },
-        //TODO DS 세팅 후 변경
-        containerColor = Color.White,
     ) { innerPadding ->
         MainNavHost(
             navigator = navigator,
@@ -75,6 +81,7 @@ private fun MainNavHost(
         )
 
         brandGraph(navigateUp = navigator::navigateUp)
+
         payGraph()
 
         shoppingGraph(innerPadding = innerPadding)
