@@ -1,7 +1,6 @@
 package org.sopt.lotteshopping.presentation.home.component
 
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,19 +25,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.sopt.lotteshopping.R
+import org.sopt.lotteshopping.core.designsystem.component.UrlImage
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
-import org.sopt.lotteshopping.data.HomeOnlineItemModel
+import org.sopt.lotteshopping.presentation.home.model.OnlineItemModel
 
 
 @Composable
 fun HomeOnlineSection(
-    onlineItems: List<HomeOnlineItemModel>,
+    onlineItems: List<OnlineItemModel>,
     modifier: Modifier = Modifier,
 ) {
 
@@ -84,7 +83,7 @@ fun HomeOnlineSection(
 
             items(onlineItems) { item ->
                 HomeOnlineCard(
-                    imageRes = item.imageRes,
+                    imageUrl = item.imageUrl,
                     label = item.label,
                     title = item.title
                 )
@@ -97,18 +96,17 @@ fun HomeOnlineSection(
 
 @Composable
 private fun HomeOnlineCard(
-    imageRes: Int,
+    imageUrl: String,
     label: String,
     title: String,
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier
-            .width(130.dp)
+        modifier = modifier.width(130.dp)
 
     ) {
-        Image(
-            painter = painterResource(id = imageRes),
+        UrlImage(
+            url=imageUrl,
             contentDescription = null,
             modifier = Modifier
                 .size(130.dp)
@@ -138,6 +136,6 @@ private fun HomeOnlineCard(
 @Preview(showBackground = true)
 @Composable
 private fun HomeOnlineSectionPreview() {
-    HomeOnlineSection(onlineItems = HomeOnlineItemModel.dummyData)
+    HomeOnlineSection(onlineItems = emptyList())
 }
 

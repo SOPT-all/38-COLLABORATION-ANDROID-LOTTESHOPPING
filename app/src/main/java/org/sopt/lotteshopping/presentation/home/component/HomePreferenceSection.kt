@@ -88,6 +88,7 @@ private fun HomePreferenceCard(
             .width(240.dp)
             .background(LotteTheme.colors.white)
             .padding(top = 14.dp, bottom = 24.dp)
+            .padding(horizontal=14.dp)
     )
     {
         UrlImage(
@@ -101,7 +102,6 @@ private fun HomePreferenceCard(
 
         Text(
             text = title,
-            modifier = Modifier.padding(horizontal = 14.dp),
             style = LotteTheme.typography.body.m14,
             color = LotteTheme.colors.black
         )
@@ -109,8 +109,7 @@ private fun HomePreferenceCard(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            modifier = Modifier
-                .padding(horizontal = 14.dp),
+            modifier = Modifier,
             text = targetBranch,
             style = LotteTheme.typography.label.r12,
             color = LotteTheme.colors.gray400
@@ -119,7 +118,6 @@ private fun HomePreferenceCard(
         Spacer(modifier = Modifier.height(2.dp))
 
         Text(
-            modifier = Modifier.padding(horizontal = 14.dp),
             text = "$startDate ~ $endDate",
             style = LotteTheme.typography.label.r12,
             color = LotteTheme.colors.gray400
