@@ -83,15 +83,17 @@ private fun MainNavigationBarItem(
         }
         Icon(
             imageVector = ImageVector.vectorResource(selectedIcon),
-            contentDescription = stringResource(id = tab.titleRes),
+            contentDescription = tab.titleRes?.let { stringResource(id = it) } ?: "",
             tint = selectedColor,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier.size(if (tab == MainTab.PAY) 38.dp else 24.dp)
         )
-        Text(
-            text = stringResource(id = tab.titleRes),
-            color = selectedColor,
-            style = LotteTheme.typography.caption.r10
-        )
+        tab.titleRes?.let { titleRes ->
+            Text(
+                text = stringResource(id = titleRes),
+                color = selectedColor,
+                style = LotteTheme.typography.caption.r10
+            )
+        }
     }
 }
 

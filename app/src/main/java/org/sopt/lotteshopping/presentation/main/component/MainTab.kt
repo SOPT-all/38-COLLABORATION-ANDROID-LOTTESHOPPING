@@ -14,7 +14,7 @@ import org.sopt.lotteshopping.presentation.shopping.navigation.Shopping
 enum class MainTab(
     @get:DrawableRes val selectedIconRes: Int,
     @get:DrawableRes val unselectedIconRes: Int,
-    @get:StringRes val titleRes : Int,
+    @get:StringRes val titleRes : Int? = null,
     val route: MainTabRoute,
 ) {
     HOME(
@@ -32,7 +32,7 @@ enum class MainTab(
     PAY(
         selectedIconRes = R.drawable.ic_nav_pay_selected,
         unselectedIconRes = R.drawable.ic_nav_pay_unselected,
-        titleRes=R.string.pay,
+        titleRes= null,
         route= Pay,
     ),
     SHOPPING(
