@@ -3,6 +3,7 @@ package org.sopt.lotteshopping.presentation.home
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -163,8 +164,7 @@ private fun HomeScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 20.dp)
-                        .width(320.dp)
-                        .height(98.dp)
+                        .aspectRatio(160f/49f)
                 )
             }
         }
