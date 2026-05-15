@@ -1,6 +1,7 @@
 package org.sopt.lotteshopping.presentation.home.component
 
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,19 +26,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.sopt.lotteshopping.R
-import org.sopt.lotteshopping.core.designsystem.component.UrlImage
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
-import org.sopt.lotteshopping.presentation.home.model.OnlineItemModel
+import org.sopt.lotteshopping.presentation.home.model.HomeOnlineItemModel
 
 
 @Composable
 fun HomeOnlineSection(
-    onlineItems: List<OnlineItemModel>,
+    onlineItems: List<HomeOnlineItemModel>,
     modifier: Modifier = Modifier,
 ) {
 
@@ -83,7 +84,7 @@ fun HomeOnlineSection(
 
             items(onlineItems) { item ->
                 HomeOnlineCard(
-                    imageUrl = item.imageUrl,
+                    imageRes = item.imageRes,
                     label = item.label,
                     title = item.title
                 )
@@ -96,7 +97,7 @@ fun HomeOnlineSection(
 
 @Composable
 private fun HomeOnlineCard(
-    imageUrl: String,
+    imageRes: Int,
     label: String,
     title: String,
     modifier: Modifier = Modifier
@@ -105,13 +106,13 @@ private fun HomeOnlineCard(
         modifier = modifier.width(130.dp)
 
     ) {
-        UrlImage(
-            url=imageUrl,
+        Image(
+            painter = painterResource(id = imageRes),
             contentDescription = null,
             modifier = Modifier
                 .size(130.dp)
                 .clip(RoundedCornerShape(4.dp)),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
 
         Spacer(modifier = Modifier.height(8.dp))
