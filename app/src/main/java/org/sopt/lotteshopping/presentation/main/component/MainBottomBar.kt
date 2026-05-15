@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -41,8 +40,8 @@ fun MainBottomBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(color = LotteTheme.colors.gray50)
-            .padding(bottom = 14.dp),
+            .heightIn(68.dp)
+            .background(color = LotteTheme.colors.gray50),
         verticalAlignment = Alignment.CenterVertically
     ) {
         tabs.forEach { tab ->
@@ -73,25 +72,23 @@ private fun MainNavigationBarItem(
     Column(
         modifier = modifier
             .semantics(mergeDescendants = true) { role = Role.Tab }
-            .heightIn(min = 68.dp)
             .noRippleClickable(onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
-        if (tab == MainTab.PAY) {
-            Spacer(modifier = Modifier.height(15.dp))
-        }
         Icon(
             imageVector = ImageVector.vectorResource(selectedIcon),
-            contentDescription = tab.titleRes?.let { stringResource(id = it) } ?: "",
+            contentDescription = stringResource(tab.titleRes),
             tint = selectedColor,
             modifier = Modifier.size(if (tab == MainTab.PAY) 38.dp else 24.dp)
         )
-        tab.titleRes?.let { titleRes ->
+
+        if (tab != MainTab.PAY) {
+            Spacer(modifier = Modifier.height(2.dp))
             Text(
-                text = stringResource(id = titleRes),
+                text = stringResource(tab.titleRes),
                 color = selectedColor,
-                style = LotteTheme.typography.caption.r10
+                style = LotteTheme.typography.caption.r10,
             )
         }
     }

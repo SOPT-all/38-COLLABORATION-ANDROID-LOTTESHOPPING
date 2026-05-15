@@ -14,37 +14,37 @@ import org.sopt.lotteshopping.presentation.shopping.navigation.Shopping
 enum class MainTab(
     @get:DrawableRes val selectedIconRes: Int,
     @get:DrawableRes val unselectedIconRes: Int,
-    @get:StringRes val titleRes : Int? = null,
+    @get:StringRes val titleRes: Int,
     val route: MainTabRoute,
 ) {
     HOME(
         selectedIconRes = R.drawable.ic_nav_home_selected,
         unselectedIconRes = R.drawable.ic_nav_home_unselected,
-        titleRes= R.string.home,
+        titleRes = R.string.home,
         route = Home,
     ),
     PLACE(
         selectedIconRes = R.drawable.ic_nav_place_selected,
         unselectedIconRes = R.drawable.ic_nav_place_unselected,
-        titleRes= R.string.place,
-        route= Place,
+        titleRes = R.string.place,
+        route = Place,
     ),
     PAY(
         selectedIconRes = R.drawable.ic_nav_pay_selected,
         unselectedIconRes = R.drawable.ic_nav_pay_unselected,
-        titleRes= null,
-        route= Pay,
+        titleRes = R.string.pay,
+        route = Pay,
     ),
     SHOPPING(
         selectedIconRes = R.drawable.ic_nav_shopping_selected,
         unselectedIconRes = R.drawable.ic_nav_shopping_unselected,
-        titleRes= R.string.shopping,
-        route= Shopping,
+        titleRes = R.string.shopping,
+        route = Shopping,
     ),
     MY(
         selectedIconRes = R.drawable.ic_nav_my_selected,
         unselectedIconRes = R.drawable.ic_nav_my_unselected,
         titleRes = R.string.my,
-        route= My
+        route = My
     );
 }
