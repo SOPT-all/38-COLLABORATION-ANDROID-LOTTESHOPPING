@@ -164,8 +164,9 @@ private fun HomeScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 20.dp)
-                        .aspectRatio(160f/49f)
+                        .aspectRatio(160f / 49f)
                 )
+                Spacer(modifier = Modifier.height(21.dp))
             }
         }
     }

@@ -1,6 +1,7 @@
 package org.sopt.lotteshopping.presentation.home.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -21,7 +22,9 @@ fun NavGraphBuilder.homeGraph(
 ) {
     composable<Home> {
         HomeRoute(
-            modifier = Modifier.padding(innerPadding),
+            modifier = Modifier
+                .padding(innerPadding)
+                .consumeWindowInsets(innerPadding),
             navigateToBrand = navigateToBrand,
         )
     }
