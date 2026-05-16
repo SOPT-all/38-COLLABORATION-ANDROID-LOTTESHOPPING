@@ -3,6 +3,7 @@ package org.sopt.lotteshopping.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -33,13 +34,13 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     private fun fetchHomeData() {
         viewModelScope.launch {
             // TODO: 서버 데이터 연동 로직 추후 목 데이터 삭제
-            val mockTopBanners = listOf(
+            val mockTopBanners = persistentListOf(
                 HomeTopBannerModel(1L, 1, ""),
                 HomeTopBannerModel(2L, 1, ""),
                 HomeTopBannerModel(3L, 1, "")
             )
 
-            val mockBrands = listOf(
+            val mockBrands = persistentListOf(
                 BeautyBrandModel(1L, "샤넬", ""),
                 BeautyBrandModel(2L, "설화수", ""),
                 BeautyBrandModel(3L, "입생로랑", ""),

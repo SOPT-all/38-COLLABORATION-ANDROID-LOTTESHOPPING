@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kotlinx.collections.immutable.persistentListOf
 import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.component.UrlImage
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
@@ -176,12 +177,12 @@ private fun HomeScreenPreview() {
     LOTTESHOPPINGTheme {
         HomeScreen(
             uiState = HomeUiState(
-                topBanners = listOf(
+                topBanners = persistentListOf(
                     HomeTopBannerModel(1L, 1, ""),
                     HomeTopBannerModel(2L, 2, ""),
                     HomeTopBannerModel(3L, 3, "")
                 ),
-                brands = listOf(
+                brands = persistentListOf(
                     BeautyBrandModel(1L, "샤넬", ""),
                     BeautyBrandModel(2L, "디올", "")
                 ),

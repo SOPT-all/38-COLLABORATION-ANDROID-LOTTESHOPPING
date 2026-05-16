@@ -15,8 +15,8 @@ import org.sopt.lotteshopping.presentation.home.model.HomeOnlineItemModel
 data class HomeUiState(
     val selectedHomeTab: HomeTabType = HomeTabType.DEPARTMENT_STORE,
     val selectedStoreTab: HomeStoreTab = HomeStoreTab.DEPARTMENT_STORE,
-    val topBanners: List<HomeTopBannerModel> = emptyList(),
-    val brands: List<BeautyBrandModel> = emptyList(),
+    val topBanners: ImmutableList<HomeTopBannerModel> = persistentListOf(),
+    val brands: ImmutableList<BeautyBrandModel> = persistentListOf(),
     val contents: ImmutableList<BeautyContentModel> = persistentListOf(
         BeautyContentModel(R.drawable.img_home_collection_aesop, "[Aesop]", "감각적인 데일리 케어"),
         BeautyContentModel(R.drawable.img_home_collection_sulwhasoo, "[Sulwhasoo]", "윤빛 케어 에센셜"),
