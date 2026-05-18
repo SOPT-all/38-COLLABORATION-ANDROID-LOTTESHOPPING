@@ -3,8 +3,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import org.sopt.lotteshopping.data.repository.DummyRepository
-import org.sopt.lotteshopping.data.repositoryImpl.DummyRepositoryImpl
+import org.sopt.lotteshopping.data.repository.BannersRepository
+import org.sopt.lotteshopping.data.repositoryImpl.BannersRepositoryImpl
 import javax.inject.Singleton
 
 
@@ -13,8 +13,8 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
     @Binds
     @Singleton
-    abstract fun bindsDummyRepository(
-        dummyRepositoryImpl: DummyRepositoryImpl,
-    ): DummyRepository
+    abstract fun bindsBannersRepository(
+        bannersRepositoryImpl: BannersRepositoryImpl,
+    ): BannersRepository
 }
 
