@@ -1,6 +1,7 @@
 package org.sopt.lotteshopping.presentation.home.brand.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,7 +26,6 @@ import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 @Composable
 fun InformationCard(
     modifier: Modifier = Modifier,
-    title: String = "쿠폰·에누리 적용 가능 할인율: 최대 10%",
     noticeTitle: String = "꼭 확인해주세요!",
     primaryDescription: String = "쿠폰·에누리 등을 통해 최대로 적용 받으실 수 있는 할인율 기준으로, 고객님께서 사용 가능한 할인 수단에 따라 할인율이 다르게 적용됩니다.",
     descriptions: List<String> = listOf(
@@ -33,40 +34,34 @@ fun InformationCard(
     ),
 ) {
     Column(
-        modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .background(
+                color = LotteTheme.colors.gray50,
+                shape = RoundedCornerShape(12.dp),
+            )
+            .padding(18.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Text(
-            text = title,
-            color = LotteTheme.colors.black,
-            style = LotteTheme.typography.body.sb16,
-        )
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            InfoBadge()
+            Text(
+                text = noticeTitle,
+                color = LotteTheme.colors.black,
+                style = LotteTheme.typography.body.m14,
+            )
+        }
 
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    color = LotteTheme.colors.gray50,
-                    shape = RoundedCornerShape(12.dp),
-                )
-                .padding(18.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                InfoBadge()
-                Text(
-                    text = noticeTitle,
-                    color = LotteTheme.colors.black,
-                    style = LotteTheme.typography.body.m14,
-                )
-            }
-
             InformationText(
                 text = primaryDescription,
-                color = LotteTheme.colors.gray700,
+                color = LotteTheme.colors.black,
                 style = LotteTheme.typography.label.m12,
             )
 
@@ -94,11 +89,25 @@ private fun InfoBadge(
             ),
         contentAlignment = Alignment.Center,
     ) {
-        Text(
-            text = "!",
-            color = LotteTheme.colors.white,
-            style = LotteTheme.typography.caption.r10,
-        )
+        Canvas(
+            modifier = Modifier.size(
+                width = 4.dp,
+                height = 8.dp,
+            ),
+        ) {
+            drawLine(
+                color = Color.White,
+                start = center.copy(y = 0f),
+                end = center.copy(y = size.height * 0.62f),
+                strokeWidth = 1.5.dp.toPx(),
+                cap = StrokeCap.Round,
+            )
+            drawCircle(
+                color = Color.White,
+                radius = 0.75.dp.toPx(),
+                center = center.copy(y = size.height - 0.75.dp.toPx()),
+            )
+        }
     }
 }
 
@@ -109,12 +118,25 @@ private fun InformationText(
     style: TextStyle,
     modifier: Modifier = Modifier,
 ) {
-    Text(
-        text = "• $text",
-        modifier = modifier.fillMaxWidth(),
-        color = color,
-        style = style,
-    )
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(start = 6.dp),
+        horizontalArrangement = Arrangement.spacedBy(7.dp),
+        verticalAlignment = Alignment.Top,
+    ) {
+        Text(
+            text = "•",
+            color = color,
+            style = style,
+        )
+        Text(
+            text = text,
+            modifier = Modifier.weight(1f),
+            color = color,
+            style = style,
+        )
+    }
 }
 
 @Preview(
