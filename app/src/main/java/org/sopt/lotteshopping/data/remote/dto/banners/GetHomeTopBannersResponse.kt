@@ -6,9 +6,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GetHomeTopBannersResponse(
     @SerialName("id")
-    val id: Int,
+    val id: Long,
     @SerialName("seq")
-    val seq: Int,
+    val seq: Long,
     @SerialName("imageUrl")
     val imageUrl: String?,
 )

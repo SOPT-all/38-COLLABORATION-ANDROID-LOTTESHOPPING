@@ -4,7 +4,7 @@ import org.sopt.lotteshopping.data.model.banners.HomeTopBannerModel
 import org.sopt.lotteshopping.data.remote.dto.banners.GetHomeTopBannersResponse
 
 fun GetHomeTopBannersResponse.toModel() = HomeTopBannerModel(
-    id = id.toLong(),
-    seq = seq.toLong(),
+    id = id,
+    seq = seq,
     imageUrl = imageUrl ?: ""
 )
