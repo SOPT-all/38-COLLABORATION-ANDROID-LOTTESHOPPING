@@ -11,6 +11,7 @@ fun ShoppingHighlightResponseDto.toModel(): ShoppingHighlightModel =
         imageUrl = this.imageUrl,
     )
 
+@JvmName("shoppingHighlightListToModel")
 fun List<ShoppingHighlightResponseDto>.toModel(): List<ShoppingHighlightModel> =
     this.map { it.toModel() }
 
@@ -24,5 +25,6 @@ fun NewsResponseDto.toModel(): NewsModel  =
         imageUrl = this.imageUrl,
     )
 
+@JvmName("newsListToModel")
 fun List<NewsResponseDto>.toModel() : List<NewsModel> =
     this.map { it.toModel() }
