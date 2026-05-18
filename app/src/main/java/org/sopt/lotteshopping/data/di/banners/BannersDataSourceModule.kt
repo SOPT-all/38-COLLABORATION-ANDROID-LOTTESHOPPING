@@ -1,4 +1,4 @@
-package org.sopt.lotteshopping.data.di
+package org.sopt.lotteshopping.data.di.banners
 
 import dagger.Binds
 import dagger.Module
