@@ -91,7 +91,7 @@ fun BrandContent(
                     services = brandServices,
                 )
 
-                InformationCard()
+                DiscountInformationSection()
 
                 BrandBanner(
                     brandName = "비오템",
@@ -114,6 +114,24 @@ fun BrandContent(
                 onReviewClick = onReviewClick,
             )
         }
+    }
+}
+
+@Composable
+private fun DiscountInformationSection(
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        Text(
+            text = "쿠폰·에누리 적용 가능 할인율: 최대 10%",
+            color = LotteTheme.colors.black,
+            style = LotteTheme.typography.body.sb16,
+        )
+
+        InformationCard()
     }
 }
 
