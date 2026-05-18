@@ -1,5 +1,6 @@
 package org.sopt.lotteshopping.presentation.home.brand.navigation
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
@@ -14,10 +15,13 @@ fun NavController.navigateToBrand(
 ) = navigate(Brand(brandId), navOptions)
 
 fun NavGraphBuilder.brandGraph(
+    innerPadding: PaddingValues,
     navigateUp: () -> Unit,
 ) {
     composable<Brand> {
-        BrandRoute()
+        BrandRoute(
+            innerPadding = innerPadding,
+        )
     }
 }
 
