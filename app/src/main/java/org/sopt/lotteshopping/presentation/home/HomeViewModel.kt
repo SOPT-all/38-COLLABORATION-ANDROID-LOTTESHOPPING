@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.sopt.lotteshopping.data.model.banners.HomeBottomBannerModel
-import org.sopt.lotteshopping.data.model.brands.BeautyBrandModel
+import org.sopt.lotteshopping.data.model.brands.HomeBeautyBrandModel
 import org.sopt.lotteshopping.data.model.preferences.HomePreferenceModel
 import org.sopt.lotteshopping.data.repository.BannersRepository
 import org.sopt.lotteshopping.presentation.home.component.HomeStoreTab
@@ -44,13 +44,13 @@ class HomeViewModel @Inject constructor(
                 .onFailure { Timber.e(it) }
 
             val mockBrands = persistentListOf(
-                BeautyBrandModel(1L, "샤넬", ""),
-                BeautyBrandModel(2L, "설화수", ""),
-                BeautyBrandModel(3L, "입생로랑", ""),
-                BeautyBrandModel(4L, "나스", ""),
-                BeautyBrandModel(5L, "라라랑", ""),
-                BeautyBrandModel(5L, "리리", ""),
-                BeautyBrandModel(5L, "로로", ""),
+                HomeBeautyBrandModel(1L, "샤넬", ""),
+                HomeBeautyBrandModel(2L, "설화수", ""),
+                HomeBeautyBrandModel(3L, "입생로랑", ""),
+                HomeBeautyBrandModel(4L, "나스", ""),
+                HomeBeautyBrandModel(5L, "라라랑", ""),
+                HomeBeautyBrandModel(5L, "리리", ""),
+                HomeBeautyBrandModel(5L, "로로", ""),
             )
 
             val mockPreference = listOf(
@@ -92,7 +92,7 @@ class HomeViewModel @Inject constructor(
         _uiState.update { it.copy(selectedStoreTab = tab) }
     }
 
-    fun onBrandClick(brand: BeautyBrandModel) {
+    fun onBrandClick(brand: HomeBeautyBrandModel) {
         viewModelScope.launch {
             if (brand.name == "설화수") {
                 _sideEffect.emit(HomeSideEffect.NavigateToBrand(brand.id))
