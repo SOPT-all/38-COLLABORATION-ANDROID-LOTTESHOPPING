@@ -1,4 +1,5 @@
 package org.sopt.lotteshopping.data.di
+
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -7,14 +8,13 @@ import org.sopt.lotteshopping.data.repository.BannersRepository
 import org.sopt.lotteshopping.data.repositoryImpl.BannersRepositoryImpl
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class RepositoryModule {
+abstract class BannersRepositoryModule {
     @Binds
     @Singleton
     abstract fun bindsBannersRepository(
         bannersRepositoryImpl: BannersRepositoryImpl,
     ): BannersRepository
-}
 
+}

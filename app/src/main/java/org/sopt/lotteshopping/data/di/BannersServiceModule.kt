@@ -1,4 +1,4 @@
-package org.sopt.lotteshopping.data.remote.di
+package org.sopt.lotteshopping.data.di
 
 import dagger.Module
 import dagger.Provides
@@ -11,7 +11,7 @@ import kotlin.jvm.java
 
 @Module
 @InstallIn(SingletonComponent::class)
-object ServiceModule {
+object BannersServiceModule {
     @Provides
     @Singleton
     fun providesBannersService(retrofit: Retrofit): BannersService =

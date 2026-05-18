@@ -1,11 +1,11 @@
-package org.sopt.lotteshopping.data.remote.di
+package org.sopt.lotteshopping.data.di
 
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import org.sopt.lotteshopping.data.remote.datasource.BannersDataSource
-import org.sopt.lotteshopping.data.remote.datasourceImpl.BannersDataSourceImpl
+import org.sopt.lotteshopping.data.remote.datasource.BannersRemoteDataSource
+import org.sopt.lotteshopping.data.remote.datasourceImpl.BannersRemoteDataSourceImpl
 import javax.inject.Singleton
 
 @Module
@@ -14,6 +14,6 @@ abstract class DataSourceModule {
     @Binds
     @Singleton
     abstract fun bindsBannersDataSource(
-        bannersDataSourceImpl: BannersDataSourceImpl,
-    ): BannersDataSource
+        bannersDataSourceImpl: BannersRemoteDataSourceImpl,
+    ): BannersRemoteDataSource
 }
