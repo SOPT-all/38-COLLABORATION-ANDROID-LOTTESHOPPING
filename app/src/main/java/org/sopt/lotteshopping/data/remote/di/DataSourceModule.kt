@@ -1,7 +1,9 @@
 package org.sopt.lotteshopping.data.remote.di
 
 import org.sopt.lotteshopping.data.remote.datasource.DummyDataSource
+import org.sopt.lotteshopping.data.remote.datasource.PreferenceRemoteDataSource
 import org.sopt.lotteshopping.data.remote.datasourceImpl.DummyDataSourceImpl
+import org.sopt.lotteshopping.data.remote.datasourceImpl.PreferenceRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,4 +18,10 @@ abstract class DataSourceModule {
     abstract fun bindsDummyDataSource(
         dataSourceImpl: DummyDataSourceImpl,
     ): DummyDataSource
+
+    @Binds
+    @Singleton
+    abstract fun bindsPreferenceRemoteDataSource(
+        preferenceRemoteDataSourceImpl: PreferenceRemoteDataSourceImpl,
+    ): PreferenceRemoteDataSource
 }

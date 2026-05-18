@@ -4,7 +4,9 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.sopt.lotteshopping.data.repository.DummyRepository
+import org.sopt.lotteshopping.data.repository.PreferenceRepository
 import org.sopt.lotteshopping.data.repositoryImpl.DummyRepositoryImpl
+import org.sopt.lotteshopping.data.repositoryImpl.PreferenceRepositoryImpl
 import javax.inject.Singleton
 
 
@@ -16,5 +18,10 @@ abstract class RepositoryModule {
     abstract fun bindsDummyRepository(
         dummyRepositoryImpl: DummyRepositoryImpl,
     ): DummyRepository
-}
 
+    @Binds
+    @Singleton
+    abstract fun bindsPreferenceRepository(
+        preferenceRepositoryImpl: PreferenceRepositoryImpl,
+    ): PreferenceRepository
+}
