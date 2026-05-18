@@ -6,10 +6,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GetHomeBrandsResponse(
     @SerialName("id")
-    val id: Long?,
+    val id: Long,
     @SerialName("name")
-    val name: String?,
+    val name: String,
     @SerialName("imageUrl")
-    val imageUrl: String?,
+    val imageUrl: String,
 ) {
 }
