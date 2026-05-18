@@ -3,7 +3,6 @@ package org.sopt.lotteshopping.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,6 +15,7 @@ import org.sopt.lotteshopping.data.model.banners.HomeBottomBannerModel
 import org.sopt.lotteshopping.data.model.brands.HomeBeautyBrandModel
 import org.sopt.lotteshopping.data.model.preferences.HomePreferenceModel
 import org.sopt.lotteshopping.data.repository.BannersRepository
+import org.sopt.lotteshopping.data.repository.BrandsRepository
 import org.sopt.lotteshopping.presentation.home.component.HomeStoreTab
 import org.sopt.lotteshopping.presentation.home.component.HomeTabType
 import timber.log.Timber
@@ -23,7 +23,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val bannersRepository: BannersRepository
+    private val bannersRepository: BannersRepository,
+    private val brandsRepository: BrandsRepository,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
@@ -43,15 +44,11 @@ class HomeViewModel @Inject constructor(
                 }
                 .onFailure { Timber.e(it) }
 
-            val mockBrands = persistentListOf(
-                HomeBeautyBrandModel(1L, "샤넬", ""),
-                HomeBeautyBrandModel(2L, "설화수", ""),
-                HomeBeautyBrandModel(3L, "입생로랑", ""),
-                HomeBeautyBrandModel(4L, "나스", ""),
-                HomeBeautyBrandModel(5L, "라라랑", ""),
-                HomeBeautyBrandModel(5L, "리리", ""),
-                HomeBeautyBrandModel(5L, "로로", ""),
-            )
+            brandsRepository.getHomeBrands()
+                .onSuccess { brands ->
+                    _uiState.update { it.copy(brands = brands.toImmutableList()) }
+                }
+                .onFailure { Timber.e(it) }
 
             val mockPreference = listOf(
                 HomePreferenceModel(
@@ -76,7 +73,6 @@ class HomeViewModel @Inject constructor(
 
             _uiState.update {
                 it.copy(
-                    brands = mockBrands,
                     preference = mockPreference,
                     bottomBanner = mockBottomBanner
                 )
