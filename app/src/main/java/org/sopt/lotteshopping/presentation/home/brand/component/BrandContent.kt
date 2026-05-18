@@ -1,4 +1,4 @@
-package org.sopt.lotteshopping.presentation.home.brand
+package org.sopt.lotteshopping.presentation.home.brand.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,15 +26,6 @@ import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.core.extension.noRippleClickable
-import org.sopt.lotteshopping.presentation.home.brand.component.BrandBanner
-import org.sopt.lotteshopping.presentation.home.brand.component.BrandBannerHeader
-import org.sopt.lotteshopping.presentation.home.brand.component.BrandInfoContainer
-import org.sopt.lotteshopping.presentation.home.brand.component.BrandService
-import org.sopt.lotteshopping.presentation.home.brand.component.BrandServiceContent
-import org.sopt.lotteshopping.presentation.home.brand.component.InformationCard
-import org.sopt.lotteshopping.presentation.home.brand.component.ProductCard
-import org.sopt.lotteshopping.presentation.home.brand.component.ReservationCard
-import org.sopt.lotteshopping.presentation.home.brand.component.UnderlineTab
 
 @Composable
 fun BrandContent(
