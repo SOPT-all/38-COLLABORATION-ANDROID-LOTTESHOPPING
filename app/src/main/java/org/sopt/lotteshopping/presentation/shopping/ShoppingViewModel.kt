@@ -1,5 +1,7 @@
 package org.sopt.lotteshopping.presentation.shopping
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,10 +12,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.sopt.lotteshopping.data.model.shopping.NewsCategory
+import org.sopt.lotteshopping.data.model.shopping.NewsModel
 import org.sopt.lotteshopping.data.repository.ShoppingRepository
+import org.sopt.lotteshopping.core.extension.toFormattedDate
 import javax.inject.Inject
 
 @HiltViewModel
+@RequiresApi(Build.VERSION_CODES.O)
 class ShoppingViewModel @Inject constructor(
     private val shoppingRepository: ShoppingRepository,
 ) : ViewModel() {
@@ -40,7 +45,20 @@ class ShoppingViewModel @Inject constructor(
         viewModelScope.launch {
             shoppingRepository.getNews(category)
                 .onSuccess { result ->
-                    _uiState.update { it.copy(news = result.toImmutableList()) }
+                    _uiState.update {
+                        it.copy(
+                            news = result.map { model ->
+                                NewsModel(
+                                    id = model.id,
+                                    title = model.title,
+                                    targetBranch = model.targetBranch,
+                                    startDate = model.startDate.toFormattedDate(),
+                                    endDate = model.endDate.toFormattedDate(),
+                                    imageUrl = model.imageUrl,
+                                )
+                            }.toImmutableList()
+                        )
+                    }
                 }
         }
     }
