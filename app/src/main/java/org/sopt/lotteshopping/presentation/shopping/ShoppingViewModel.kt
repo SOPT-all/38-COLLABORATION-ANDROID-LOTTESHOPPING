@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.sopt.lotteshopping.data.model.info.HighlightModel
-import org.sopt.lotteshopping.data.model.info.NewsCategory
-import org.sopt.lotteshopping.data.model.info.NewsModel
+import org.sopt.lotteshopping.data.model.shopping.ShoppingHighlightModel
+import org.sopt.lotteshopping.data.model.shopping.NewsCategory
+import org.sopt.lotteshopping.data.model.shopping.NewsModel
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,19 +32,19 @@ class ShoppingViewModel @Inject constructor(
             delay(300)
 
             val data = listOf(
-                HighlightModel(
+                ShoppingHighlightModel(
                     id = 0L,
                     imageUrl = "https://i.pinimg.com/1200x/26/5b/65/265b65e00c052334005f6fb8e184a54f.jpg",
                 ),
-                HighlightModel(
+                ShoppingHighlightModel(
                     id = 1L,
                     imageUrl = "https://i.pinimg.com/1200x/26/5b/65/265b65e00c052334005f6fb8e184a54f.jpg",
                 ),
-                HighlightModel(
+                ShoppingHighlightModel(
                     id = 2L,
                     imageUrl = "https://i.pinimg.com/1200x/26/5b/65/265b65e00c052334005f6fb8e184a54f.jpg",
                 ),
-                HighlightModel(
+                ShoppingHighlightModel(
                     id = 3L,
                     imageUrl = "https://i.pinimg.com/1200x/26/5b/65/265b65e00c052334005f6fb8e184a54f.jpg",
                 )

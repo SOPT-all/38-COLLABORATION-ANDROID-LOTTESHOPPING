@@ -18,9 +18,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.collections.immutable.persistentListOf
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
-import org.sopt.lotteshopping.data.model.info.HighlightModel
-import org.sopt.lotteshopping.data.model.info.NewsCategory
-import org.sopt.lotteshopping.data.model.info.NewsModel
+import org.sopt.lotteshopping.data.model.shopping.ShoppingHighlightModel
+import org.sopt.lotteshopping.data.model.shopping.NewsCategory
+import org.sopt.lotteshopping.data.model.shopping.NewsModel
 import org.sopt.lotteshopping.presentation.shopping.component.ShoppingCardProduct
 import org.sopt.lotteshopping.presentation.shopping.component.ShoppingChipContainer
 import org.sopt.lotteshopping.presentation.shopping.component.ShoppingHeader
@@ -98,9 +98,9 @@ private fun ShoppingScreen(
 @Composable
 private fun ShoppingScreenPreview() {
     val highlights = persistentListOf(
-        HighlightModel(0L, ""),
-        HighlightModel(1L, ""),
-        HighlightModel(2L, ""),
+        ShoppingHighlightModel(0L, ""),
+        ShoppingHighlightModel(1L, ""),
+        ShoppingHighlightModel(2L, ""),
         )
     
     val news = persistentListOf(

@@ -1,4 +1,4 @@
-package org.sopt.lotteshopping.data.model.info
+package org.sopt.lotteshopping.data.model.shopping
 
 // TODO (도연) : api 필드 서버 명세에 따라 변경
 enum class NewsCategory(
