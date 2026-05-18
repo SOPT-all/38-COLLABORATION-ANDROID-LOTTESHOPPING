@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
+import org.sopt.lotteshopping.presentation.home.brand.navigation.Brand
 import org.sopt.lotteshopping.presentation.home.navigation.Home
 import org.sopt.lotteshopping.presentation.home.navigation.navigateToHome
 import org.sopt.lotteshopping.presentation.main.component.MainTab
@@ -25,7 +26,7 @@ class MainNavigator(
                 ?.destination
             return MainTab.entries.find { tab ->
                 destination?.hasRoute(tab.route::class) == true
-            }
+            } ?: if (destination?.hasRoute(Brand::class) == true) MainTab.HOME else null
         }
 
     fun navigate(tab: MainTab) {
