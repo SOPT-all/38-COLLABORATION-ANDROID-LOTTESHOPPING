@@ -8,11 +8,9 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideIn
 import androidx.compose.animation.slideOut
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.IntOffset
 import androidx.navigation.compose.NavHost
 import kotlinx.collections.immutable.toImmutableList
@@ -50,7 +48,6 @@ fun MainScreen(
                     tabs = mainTabs,
                     currentTab = navigator.currentTab,
                     onTabSelected = navigator::navigate,
-                    modifier = Modifier.navigationBarsPadding(),
                 )
             }
         },

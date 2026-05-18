@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -41,7 +43,8 @@ fun MainBottomBar(
         modifier = modifier
             .fillMaxWidth()
             .heightIn(68.dp)
-            .background(color = LotteTheme.colors.gray50),
+            .background(color = LotteTheme.colors.gray50)
+            .navigationBarsPadding(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         tabs.forEach { tab ->
@@ -55,7 +58,9 @@ fun MainBottomBar(
                 onClick = { onTabSelected(tab) },
                 selectedIcon = selectedIcon,
                 selectedColor = selectedColor,
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(vertical = 14.dp),
             )
         }
     }
