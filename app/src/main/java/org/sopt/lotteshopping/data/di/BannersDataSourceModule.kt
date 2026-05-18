@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DataSourceModule {
+abstract class BannersDataSourceModule {
     @Binds
     @Singleton
     abstract fun bindsBannersDataSource(
