@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface BannersService {
     @GET("api/v1/banners/top")
-    suspend fun getHomeTopBanners():  BaseResponse<List<GetHomeTopBannersResponse>>
+    suspend fun getHomeTopBanners(): BaseResponse<List<GetHomeTopBannersResponse>>
 
     @GET("api/v1/banners/bottom")
     suspend fun getHomeBottomBanner(): BaseResponse<GetHomeBottomBannerResponse>

@@ -11,12 +11,11 @@ import javax.inject.Inject
 class BannersRepositoryImpl @Inject constructor(
     private val bannersDataSource: BannersRemoteDataSource
 ) : BannersRepository {
-
     override suspend fun getHomeTopBanners(): Result<List<HomeTopBannerModel>> = suspendRunCatching {
         bannersDataSource.getHomeTopBanners().data?.map { it.toModel() } ?: emptyList()
     }
 
-    override suspend fun getHomeBottomBanner(): Result<HomeBottomBannerModel> = suspendRunCatching {
-        requireNotNull(bannersDataSource.getHomeBottomBanner().data).toModel()
+    override suspend fun getHomeBottomBanner(): Result<HomeBottomBannerModel?> = suspendRunCatching {
+        bannersDataSource.getHomeBottomBanner().data?.toModel()
     }
 }
