@@ -8,7 +8,6 @@ import org.sopt.lotteshopping.data.repository.PreferenceRepository
 import org.sopt.lotteshopping.data.repositoryImpl.PreferenceRepositoryImpl
 import javax.inject.Singleton
 
-// #[FEAT/#31]
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class PreferencesRepositoryModule {

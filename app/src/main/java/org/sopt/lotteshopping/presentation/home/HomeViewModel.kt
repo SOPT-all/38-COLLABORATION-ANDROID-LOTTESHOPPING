@@ -25,7 +25,6 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val bannersRepository: BannersRepository,
     private val brandsRepository: BrandsRepository,
-    // #[FEAT/#31]
     private val preferenceRepository: PreferenceRepository,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(HomeUiState())
@@ -52,7 +51,6 @@ class HomeViewModel @Inject constructor(
                 }
                 .onFailure { Timber.e(it) }
 
-            // #[FEAT/#31]
             preferenceRepository.getPreferences()
                 .onSuccess { preference ->
                     _uiState.update { it.copy(preference = preference) }

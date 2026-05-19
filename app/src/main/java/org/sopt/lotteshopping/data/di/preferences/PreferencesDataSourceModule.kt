@@ -8,7 +8,6 @@ import org.sopt.lotteshopping.data.remote.datasource.PreferenceRemoteDataSource
 import org.sopt.lotteshopping.data.remote.datasourceImpl.PreferenceRemoteDataSourceImpl
 import javax.inject.Singleton
 
-// #[FEAT/#31]
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class PreferencesDataSourceModule {
