@@ -28,11 +28,11 @@ import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.component.UrlImage
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
-import org.sopt.lotteshopping.data.model.info.HighlightModel
+import org.sopt.lotteshopping.data.model.shopping.ShoppingHighlightModel
 
 @Composable
 fun ShoppingHighlightSection(
-    highlights: ImmutableList<HighlightModel>,
+    highlights: ImmutableList<ShoppingHighlightModel>,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -91,23 +91,23 @@ private fun ShoppingHighlightSectionPreview() {
     LOTTESHOPPINGTheme {
         ShoppingHighlightSection(
             highlights = persistentListOf(
-                HighlightModel(
+                ShoppingHighlightModel(
                     id = 1L,
                     imageUrl = ""
                 ),
-                HighlightModel(
+                ShoppingHighlightModel(
                     id = 2L,
                     imageUrl = ""
                 ),
-                HighlightModel(
+                ShoppingHighlightModel(
                     id = 3L,
                     imageUrl = ""
                 ),
-                HighlightModel(
+                ShoppingHighlightModel(
                     id = 4L,
                     imageUrl = ""
                 ),
-                HighlightModel(
+                ShoppingHighlightModel(
                     id = 5L,
                     imageUrl = ""
                 ),
