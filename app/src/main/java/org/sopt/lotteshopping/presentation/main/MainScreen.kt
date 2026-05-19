@@ -77,7 +77,11 @@ private fun MainNavHost(
             navigateToBrand = navigator.navController::navigateToBrand,
         )
 
-        brandGraph(navigateUp = navigator::navigateUp)
+        brandGraph(
+            innerPadding = innerPadding,
+            navigateUp = navigator::navigateUp,
+            navigateToHome = { navigator.navigate(MainTab.HOME) },
+        )
 
         payGraph()
 

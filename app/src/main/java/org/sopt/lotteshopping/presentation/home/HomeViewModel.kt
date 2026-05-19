@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.sopt.lotteshopping.data.model.banners.HomeBottomBannerModel
 import org.sopt.lotteshopping.data.model.brands.HomeBeautyBrandModel
 import org.sopt.lotteshopping.data.repository.BannersRepository
 import org.sopt.lotteshopping.data.repository.BrandsRepository
@@ -57,13 +56,11 @@ class HomeViewModel @Inject constructor(
                 }
                 .onFailure { Timber.e(it) }
 
-            val mockBottomBanner = HomeBottomBannerModel(1L, "")
-
-            _uiState.update {
-                it.copy(
-                    bottomBanner = mockBottomBanner
-                )
-            }
+            bannersRepository.getHomeBottomBanner()
+                .onSuccess { bottomBanner ->
+                    _uiState.update { it.copy(bottomBanner = bottomBanner) }
+                }
+                .onFailure { Timber.e(it) }
         }
     }
 
