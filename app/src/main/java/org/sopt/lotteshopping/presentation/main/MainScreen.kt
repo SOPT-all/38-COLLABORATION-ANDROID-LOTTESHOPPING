@@ -27,15 +27,14 @@ private val mainTabs = MainTab.entries.toImmutableList()
 
 @Composable
 fun MainScreen(
-    onTabChanged: (MainTab?) -> Unit,
+    onStatusBarDarkChanged: (Boolean) -> Unit,
     navigator: MainNavigator = rememberMainNavigator(),
 ) {
-    val currentTab = navigator.currentTab
+    val isSystembarDark = navigator.isStatusBarDark
 
-    LaunchedEffect(currentTab) {
-        onTabChanged(currentTab)
+    LaunchedEffect(isSystembarDark) {
+        onStatusBarDarkChanged(isSystembarDark)
     }
-
 
     Scaffold(
         bottomBar = {

@@ -8,8 +8,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
-import org.sopt.lotteshopping.presentation.main.component.MainTab
-
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -19,14 +17,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             LOTTESHOPPINGTheme {
                 MainScreen(
-                    onTabChanged = { enableEdgeToEdge(statusBarStyle = getStatusBarStyle(it)) }
+                    onStatusBarDarkChanged = { enableEdgeToEdge(statusBarStyle = getStatusBarStyle(it)) }
                 )
             }
         }
     }
 
-    private fun getStatusBarStyle(tab: MainTab?): SystemBarStyle =
-        if (tab == MainTab.HOME) {
+    private fun getStatusBarStyle(isDark: Boolean): SystemBarStyle =
+        if (isDark) {
             SystemBarStyle.dark(Color.BLACK)
         } else {
             SystemBarStyle.light(
@@ -35,4 +33,3 @@ class MainActivity : ComponentActivity() {
             )
         }
 }
-

@@ -25,6 +25,9 @@ class MainNavigator(
             .value
             ?.destination
 
+    val isStatusBarDark: Boolean
+        @Composable get() = currentDestination?.hasRoute(Home::class) == true
+
     val currentTab: MainTab?
         @Composable get() = MainTab.entries.find { tab ->
             currentDestination?.hasRoute(tab.route::class) == true
