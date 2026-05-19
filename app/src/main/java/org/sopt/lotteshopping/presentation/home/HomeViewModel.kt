@@ -43,15 +43,15 @@ class HomeViewModel @Inject constructor(
                 }
                 .onFailure { Timber.e(it) }
 
-            bannersRepository.getHomeBottomBanner()
-                .onSuccess { bottomBanner ->
-                    _uiState.update { it.copy(bottomBanner = bottomBanner) }
-                }
-                .onFailure { Timber.e(it) }
-
             brandsRepository.getHomeBrands()
                 .onSuccess { brands ->
                     _uiState.update { it.copy(brands = brands.toImmutableList()) }
+                }
+                .onFailure { Timber.e(it) }
+
+            bannersRepository.getHomeBottomBanner()
+                .onSuccess { bottomBanner ->
+                    _uiState.update { it.copy(bottomBanner = bottomBanner) }
                 }
                 .onFailure { Timber.e(it) }
 
