@@ -11,20 +11,8 @@ fun BrandRoute(
     innerPadding: PaddingValues,
     navigateUp: () -> Unit,
 ) {
-    BrandScreen(
-        innerPadding = innerPadding,
-        navigateUp = navigateUp,
-    )
-}
-
-@Composable
-private fun BrandScreen(
-    innerPadding: PaddingValues,
-    navigateUp: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
     BrandContent(
         onBackClick = navigateUp,
-        modifier = modifier.padding(innerPadding),
+        modifier = Modifier.padding(innerPadding),
     )
 }
