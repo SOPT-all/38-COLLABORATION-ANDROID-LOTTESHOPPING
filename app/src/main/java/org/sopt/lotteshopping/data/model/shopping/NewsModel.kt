@@ -1,4 +1,4 @@
-package org.sopt.lotteshopping.data.model.info
+package org.sopt.lotteshopping.data.model.shopping
 
 data class NewsModel (
     val id: Long,

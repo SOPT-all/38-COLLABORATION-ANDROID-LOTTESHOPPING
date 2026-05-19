@@ -19,7 +19,7 @@ import kotlinx.collections.immutable.toImmutableList
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 import org.sopt.lotteshopping.core.extension.noRippleClickable
-import org.sopt.lotteshopping.data.model.info.NewsCategory
+import org.sopt.lotteshopping.data.model.shopping.NewsCategory
 
 @Composable
 fun ShoppingChipContainer(
