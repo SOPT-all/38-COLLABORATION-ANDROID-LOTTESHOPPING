@@ -5,7 +5,7 @@ import kotlinx.collections.immutable.persistentListOf
 import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.data.model.banners.HomeBottomBannerModel
 import org.sopt.lotteshopping.data.model.banners.HomeTopBannerModel
-import org.sopt.lotteshopping.data.model.brands.BeautyBrandModel
+import org.sopt.lotteshopping.data.model.brands.HomeBeautyBrandModel
 import org.sopt.lotteshopping.data.model.preferences.HomePreferenceModel
 import org.sopt.lotteshopping.presentation.home.component.HomeStoreTab
 import org.sopt.lotteshopping.presentation.home.component.HomeTabType
@@ -16,7 +16,7 @@ data class HomeUiState(
     val selectedHomeTab: HomeTabType = HomeTabType.DEPARTMENT_STORE,
     val selectedStoreTab: HomeStoreTab = HomeStoreTab.DEPARTMENT_STORE,
     val topBanners: ImmutableList<HomeTopBannerModel> = persistentListOf(),
-    val brands: ImmutableList<BeautyBrandModel> = persistentListOf(),
+    val brands: ImmutableList<HomeBeautyBrandModel> = persistentListOf(),
     val contents: ImmutableList<BeautyContentModel> = persistentListOf(
         BeautyContentModel(R.drawable.img_home_collection_aesop, "[Aesop]", "감각적인 데일리 케어"),
         BeautyContentModel(R.drawable.img_home_collection_sulwhasoo, "[Sulwhasoo]", "윤빛 케어 에센셜"),

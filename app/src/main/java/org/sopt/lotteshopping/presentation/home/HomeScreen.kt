@@ -27,7 +27,7 @@ import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.colors
 import org.sopt.lotteshopping.data.model.banners.HomeBottomBannerModel
 import org.sopt.lotteshopping.data.model.banners.HomeTopBannerModel
-import org.sopt.lotteshopping.data.model.brands.BeautyBrandModel
+import org.sopt.lotteshopping.data.model.brands.HomeBeautyBrandModel
 import org.sopt.lotteshopping.data.model.preferences.HomePreferenceModel
 import org.sopt.lotteshopping.presentation.home.component.HomeBeautyBrandSection
 import org.sopt.lotteshopping.presentation.home.component.HomeBeautyContentSection
@@ -71,7 +71,7 @@ private fun HomeScreen(
     uiState: HomeUiState,
     onHomeTabClick: (HomeTabType) -> Unit,
     onStoreTabClick: (HomeStoreTab) -> Unit,
-    onBrandClick: (BeautyBrandModel) -> Unit,
+    onBrandClick: (HomeBeautyBrandModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -184,8 +184,8 @@ private fun HomeScreenPreview() {
                     HomeTopBannerModel(3L, 3, "")
                 ),
                 brands = persistentListOf(
-                    BeautyBrandModel(1L, "샤넬", ""),
-                    BeautyBrandModel(2L, "디올", "")
+                    HomeBeautyBrandModel(1L, "샤넬", ""),
+                    HomeBeautyBrandModel(2L, "디올", "")
                 ),
                 selectedHomeTab = HomeTabType.DEPARTMENT_STORE,
                 selectedStoreTab = HomeStoreTab.DEPARTMENT_STORE,

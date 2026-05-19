@@ -29,11 +29,11 @@ import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.colors
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme.typography
 import org.sopt.lotteshopping.core.extension.noRippleClickable
-import org.sopt.lotteshopping.data.model.brands.BeautyBrandModel
+import org.sopt.lotteshopping.data.model.brands.HomeBeautyBrandModel
 @Composable
 fun HomeBeautyBrandSection(
-    brands: List<BeautyBrandModel>,
-    onBrandClick: (BeautyBrandModel) -> Unit,
+    brands: List<HomeBeautyBrandModel>,
+    onBrandClick: (HomeBeautyBrandModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -64,8 +64,8 @@ fun HomeBeautyBrandSection(
 
 @Composable
 private fun HomeBeautyBrandCircleItem(
-    beauty: BeautyBrandModel,
-    onBrandClick: (BeautyBrandModel) -> Unit,
+    beauty: HomeBeautyBrandModel,
+    onBrandClick: (HomeBeautyBrandModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -110,13 +110,13 @@ private fun HomeBeautyBrandCircleItem(
 private fun HomeBeautyBrandSectionPreview() {
     LOTTESHOPPINGTheme {
         val mockBrands = listOf(
-            BeautyBrandModel(1L, "클리니크", ""),
-            BeautyBrandModel(2L, "설화수", ""),
-            BeautyBrandModel(3L, "라네즈", ""),
-            BeautyBrandModel(4L, "키엘", ""),
-            BeautyBrandModel(5L, "나스", ""),
-            BeautyBrandModel(6L, "나", ""),
-            BeautyBrandModel(7L, "스", "")
+            HomeBeautyBrandModel(1L, "클리니크", ""),
+            HomeBeautyBrandModel(2L, "설화수", ""),
+            HomeBeautyBrandModel(3L, "라네즈", ""),
+            HomeBeautyBrandModel(4L, "키엘", ""),
+            HomeBeautyBrandModel(5L, "나스", ""),
+            HomeBeautyBrandModel(6L, "나", ""),
+            HomeBeautyBrandModel(7L, "스", "")
         )
         HomeBeautyBrandSection(
             brands = mockBrands,

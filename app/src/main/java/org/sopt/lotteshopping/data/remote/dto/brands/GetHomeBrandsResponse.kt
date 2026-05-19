@@ -1,14 +1,15 @@
-package org.sopt.lotteshopping.data.remote.dto.banners
+package org.sopt.lotteshopping.data.remote.dto.brands
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class GetHomeTopBannersResponse(
+data class GetHomeBrandsResponse(
     @SerialName("id")
     val id: Long,
-    @SerialName("seq")
-    val seq: Long,
+    @SerialName("name")
+    val name: String,
     @SerialName("imageUrl")
     val imageUrl: String,
-)
+) {
+}
