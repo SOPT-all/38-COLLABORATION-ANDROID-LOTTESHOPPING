@@ -14,13 +14,16 @@ import kotlinx.coroutines.launch
 import org.sopt.lotteshopping.data.model.banners.HomeBottomBannerModel
 import org.sopt.lotteshopping.data.model.banners.HomeTopBannerModel
 import org.sopt.lotteshopping.data.model.brands.BeautyBrandModel
-import org.sopt.lotteshopping.data.model.preferences.HomePreferenceModel
+import org.sopt.lotteshopping.data.repository.PreferenceRepository
 import org.sopt.lotteshopping.presentation.home.component.HomeStoreTab
 import org.sopt.lotteshopping.presentation.home.component.HomeTabType
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor() : ViewModel() {
+class HomeViewModel @Inject constructor(
+    private val preferenceRepository: PreferenceRepository,
+) : ViewModel() {
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
@@ -50,24 +53,11 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                 BeautyBrandModel(5L, "로로", ""),
             )
 
-            val mockPreference = listOf(
-                HomePreferenceModel(
-                    imageUrl = "",
-                    title = "[브랜드 읽기] Chanel의 No.5",
-                    targetBranch = "전점",
-                    startDate = "4.1(수)",
-                    endDate = "12.31(동)",
-                    id = 0,
-                ),
-                HomePreferenceModel(
-                    imageUrl = "",
-                    title = "[스테디셀러] Clinique 기획전",
-                    targetBranch = "전점",
-                    startDate = "4.1(수)",
-                    endDate = "12.31(목)",
-                    id = 1,
-                ),
-            )
+            preferenceRepository.getPreferences()
+                .onSuccess { preference ->
+                    _uiState.update { it.copy(preference = preference) }
+                }
+                .onFailure { Timber.e(it) }
 
             val mockBottomBanner = HomeBottomBannerModel(1L, "")
 
@@ -75,7 +65,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                 it.copy(
                     topBanners = mockTopBanners,
                     brands = mockBrands,
-                    preference = mockPreference,
                     bottomBanner = mockBottomBanner
                 )
             }
