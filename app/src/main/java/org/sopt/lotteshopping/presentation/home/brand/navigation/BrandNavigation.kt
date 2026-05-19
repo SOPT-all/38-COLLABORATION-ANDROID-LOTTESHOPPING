@@ -21,6 +21,7 @@ fun NavGraphBuilder.brandGraph(
     composable<Brand> {
         BrandRoute(
             innerPadding = innerPadding,
+            navigateUp = navigateUp,
         )
     }
 }

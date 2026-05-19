@@ -29,8 +29,8 @@ import org.sopt.lotteshopping.core.extension.noRippleClickable
 
 @Composable
 fun BrandContent(
+    onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onBackClick: () -> Unit = {},
     onHomeClick: () -> Unit = {},
     onShareClick: () -> Unit = {},
     onBrandNewsClick: () -> Unit = {},
@@ -289,6 +289,8 @@ private val brandServices = listOf(
 @Composable
 private fun BrandContentPreview() {
     LOTTESHOPPINGTheme {
-        BrandContent()
+        BrandContent(
+            onBackClick = {},
+        )
     }
 }
