@@ -1,25 +1,24 @@
 package org.sopt.lotteshopping.presentation.home.brand.component
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
 
@@ -80,35 +79,12 @@ fun InformationCard(
 private fun InfoBadge(
     modifier: Modifier = Modifier,
 ) {
-    Box(
+    Image(
+        painter = painterResource(R.drawable.ic_info_badge),
+        contentDescription = null,
         modifier = modifier
-            .size(14.dp)
-            .background(
-                color = LotteTheme.colors.gray300,
-                shape = CircleShape,
-            ),
-        contentAlignment = Alignment.Center,
-    ) {
-        Canvas(
-            modifier = Modifier.size(
-                width = 4.dp,
-                height = 8.dp,
-            ),
-        ) {
-            drawLine(
-                color = Color.White,
-                start = center.copy(y = 0f),
-                end = center.copy(y = size.height * 0.62f),
-                strokeWidth = 1.5.dp.toPx(),
-                cap = StrokeCap.Round,
-            )
-            drawCircle(
-                color = Color.White,
-                radius = 0.75.dp.toPx(),
-                center = center.copy(y = size.height - 0.75.dp.toPx()),
-            )
-        }
-    }
+            .size(14.dp),
+    )
 }
 
 @Composable
