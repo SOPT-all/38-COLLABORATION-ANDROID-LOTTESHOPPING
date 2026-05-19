@@ -3,6 +3,7 @@ package org.sopt.lotteshopping.data.remote.dto.preferences
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+// #[FEAT/#31]
 @Serializable
 data class GetPreferencesResponse(
     @SerialName("status")
@@ -15,6 +16,7 @@ data class GetPreferencesResponse(
     val data: List<PreferenceResponseDto>?,
 )
 
+// #[FEAT/#31]
 @Serializable
 data class PreferenceResponseDto(
     @SerialName("id")

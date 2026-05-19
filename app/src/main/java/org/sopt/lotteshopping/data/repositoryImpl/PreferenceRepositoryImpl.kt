@@ -6,6 +6,7 @@ import org.sopt.lotteshopping.data.remote.datasource.PreferenceRemoteDataSource
 import org.sopt.lotteshopping.data.repository.PreferenceRepository
 import javax.inject.Inject
 
+// #[FEAT/#31]
 class PreferenceRepositoryImpl @Inject constructor(
     private val preferenceRemoteDataSource: PreferenceRemoteDataSource,
 ) : PreferenceRepository {

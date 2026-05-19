@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,8 +13,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.sopt.lotteshopping.data.model.banners.HomeBottomBannerModel
-import org.sopt.lotteshopping.data.model.banners.HomeTopBannerModel
 import org.sopt.lotteshopping.data.model.brands.BeautyBrandModel
+import org.sopt.lotteshopping.data.repository.BannersRepository
 import org.sopt.lotteshopping.data.repository.PreferenceRepository
 import org.sopt.lotteshopping.presentation.home.component.HomeStoreTab
 import org.sopt.lotteshopping.presentation.home.component.HomeTabType
@@ -22,6 +23,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
+    private val bannersRepository: BannersRepository,
+    // #[FEAT/#31]
     private val preferenceRepository: PreferenceRepository,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(HomeUiState())
@@ -36,12 +39,11 @@ class HomeViewModel @Inject constructor(
 
     private fun fetchHomeData() {
         viewModelScope.launch {
-            // TODO: 서버 데이터 연동 로직 추후 목 데이터 삭제
-            val mockTopBanners = persistentListOf(
-                HomeTopBannerModel(1L, 1, ""),
-                HomeTopBannerModel(2L, 1, ""),
-                HomeTopBannerModel(3L, 1, "")
-            )
+            bannersRepository.getHomeTopBanners()
+                .onSuccess { banners ->
+                    _uiState.update { it.copy(topBanners = banners.toImmutableList()) }
+                }
+                .onFailure { Timber.e(it) }
 
             val mockBrands = persistentListOf(
                 BeautyBrandModel(1L, "샤넬", ""),
@@ -53,6 +55,7 @@ class HomeViewModel @Inject constructor(
                 BeautyBrandModel(5L, "로로", ""),
             )
 
+            // #[FEAT/#31]
             preferenceRepository.getPreferences()
                 .onSuccess { preference ->
                     _uiState.update { it.copy(preference = preference) }
@@ -63,7 +66,6 @@ class HomeViewModel @Inject constructor(
 
             _uiState.update {
                 it.copy(
-                    topBanners = mockTopBanners,
                     brands = mockBrands,
                     bottomBanner = mockBottomBanner
                 )

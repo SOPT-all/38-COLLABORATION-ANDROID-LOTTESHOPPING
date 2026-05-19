@@ -3,6 +3,7 @@ package org.sopt.lotteshopping.data.mapper
 import org.sopt.lotteshopping.data.model.preferences.HomePreferenceModel
 import org.sopt.lotteshopping.data.remote.dto.preferences.PreferenceResponseDto
 
+// #[FEAT/#31]
 fun PreferenceResponseDto.toModel(): HomePreferenceModel =
     HomePreferenceModel(
         id = id,

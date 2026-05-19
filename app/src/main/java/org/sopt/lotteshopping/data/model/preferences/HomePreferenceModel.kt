@@ -1,5 +1,6 @@
 package org.sopt.lotteshopping.data.model.preferences
 
+// #[FEAT/#31]
 // TODO (동연) : api 필드 서버 명세에 따라 변경
 data class HomePreferenceModel (
     val id : Long,
