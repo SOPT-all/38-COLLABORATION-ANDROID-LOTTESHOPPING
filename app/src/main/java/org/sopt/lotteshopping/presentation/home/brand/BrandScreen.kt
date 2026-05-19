@@ -2,40 +2,30 @@ package org.sopt.lotteshopping.presentation.home.brand
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
-import org.sopt.lotteshopping.core.extension.noRippleClickable
 import org.sopt.lotteshopping.presentation.home.brand.component.BrandBanner
 import org.sopt.lotteshopping.presentation.home.brand.component.BrandBannerHeader
+import org.sopt.lotteshopping.presentation.home.brand.component.BrandCouponSection
+import org.sopt.lotteshopping.presentation.home.brand.component.BrandHeader
 import org.sopt.lotteshopping.presentation.home.brand.component.BrandInfoContainer
 import org.sopt.lotteshopping.presentation.home.brand.component.BrandService
 import org.sopt.lotteshopping.presentation.home.brand.component.BrandServiceContent
-import org.sopt.lotteshopping.presentation.home.brand.component.InformationCard
-import org.sopt.lotteshopping.presentation.home.brand.component.ProductCard
+import org.sopt.lotteshopping.presentation.home.brand.component.DiscountInformationSection
 import org.sopt.lotteshopping.presentation.home.brand.component.ReservationCard
-import org.sopt.lotteshopping.presentation.home.brand.component.UnderlineTab
 
 @Composable
 fun BrandRoute(
@@ -125,159 +115,6 @@ fun BrandScreen(
                 onBrandNewsClick = onBrandNewsClick,
                 onReviewClick = onReviewClick,
             )
-        }
-    }
-}
-
-@Composable
-private fun DiscountInformationSection(
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-    ) {
-        Text(
-            text = "쿠폰·에누리 적용 가능 할인율: 최대 10%",
-            color = LotteTheme.colors.black,
-            style = LotteTheme.typography.body.sb16,
-        )
-
-        InformationCard()
-    }
-}
-
-@Composable
-private fun BrandHeader(
-    onBackClick: () -> Unit,
-    onHomeClick: () -> Unit,
-    onShareClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier.background(LotteTheme.colors.white),
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    horizontal = 12.dp,
-                    vertical = 10.dp,
-                ),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            BrandHeaderIconButton(
-                iconRes = R.drawable.ic_header_arrow,
-                onClick = onBackClick,
-            )
-
-            Row {
-                BrandHeaderIconButton(
-                    iconRes = R.drawable.ic_header_home,
-                    onClick = onHomeClick,
-                )
-                BrandHeaderIconButton(
-                    iconRes = R.drawable.ic_header_share,
-                    onClick = onShareClick,
-                )
-            }
-        }
-        HorizontalDivider(
-            thickness = 0.5.dp,
-            color = LotteTheme.colors.gray100,
-        )
-    }
-}
-
-@Composable
-private fun BrandHeaderIconButton(
-    iconRes: Int,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Box(
-        modifier = modifier
-            .noRippleClickable(onClick)
-            .size(36.dp),
-        contentAlignment = Alignment.Center,
-    ) {
-        Icon(
-            imageVector = ImageVector.vectorResource(iconRes),
-            contentDescription = null,
-            tint = LotteTheme.colors.black,
-            modifier = Modifier.size(24.dp),
-        )
-    }
-}
-
-@Composable
-private fun BrandCouponSection(
-    onBrandNewsClick: () -> Unit,
-    onReviewClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier.fillMaxWidth(),
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    start = 24.dp,
-                    top = 14.dp,
-                ),
-            horizontalArrangement = Arrangement.spacedBy(20.dp),
-            verticalAlignment = Alignment.Bottom,
-        ) {
-            UnderlineTab(
-                label = "브랜드 뉴스",
-                selected = true,
-                onClick = onBrandNewsClick,
-            )
-            UnderlineTab(
-                label = "리뷰",
-                selected = false,
-                onClick = onReviewClick,
-            )
-        }
-        HorizontalDivider(
-            thickness = 0.4.dp,
-            color = LotteTheme.colors.gray200,
-        )
-
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 24.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            Text(
-                text = "쿠폰",
-                modifier = Modifier.padding(horizontal = 20.dp),
-                color = LotteTheme.colors.black,
-                style = LotteTheme.typography.title.sb18,
-            )
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                ProductCard(
-                    imageRes = R.drawable.img_brand_coupon_1,
-                    title = "[뷰티] 7.5~10% 상품 금액할인권",
-                    date = "4.23(목) ~ 5.6(수)",
-                    modifier = Modifier.weight(1f),
-                )
-                ProductCard(
-                    imageRes = R.drawable.img_brand_coupon_2,
-                    title = "[뷰티] 10만원 이상 구매시 1.5만원 금액할인권",
-                    date = "5.1(금) ~ 5.31(일)",
-                    modifier = Modifier.weight(1f),
-                )
-            }
         }
     }
 }
