@@ -30,10 +30,10 @@ fun MainScreen(
     onStatusBarDarkChanged: (Boolean) -> Unit,
     navigator: MainNavigator = rememberMainNavigator(),
 ) {
-    val isSystembarDark = navigator.isStatusBarDark
+    val isStatusbarDark = navigator.isStatusBarDark
 
-    LaunchedEffect(isSystembarDark) {
-        onStatusBarDarkChanged(isSystembarDark)
+    LaunchedEffect(isStatusbarDark) {
+        onStatusBarDarkChanged(isStatusbarDark)
     }
 
     Scaffold(
