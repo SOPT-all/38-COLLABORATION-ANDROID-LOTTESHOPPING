@@ -2,6 +2,7 @@ package org.sopt.lotteshopping.presentation.main
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -18,16 +19,16 @@ class MainNavigator(
 ) {
     val startDestination = Home
 
+    private val currentDestination: NavDestination?
+        @Composable get() = navController
+            .currentBackStackEntryAsState()
+            .value
+            ?.destination
+
     val currentTab: MainTab?
-        @Composable get() {
-            val destination = navController
-                .currentBackStackEntryAsState()
-                .value
-                ?.destination
-            return MainTab.entries.find { tab ->
-                destination?.hasRoute(tab.route::class) == true
-            } ?: if (destination?.hasRoute(Brand::class) == true) MainTab.HOME else null
-        }
+        @Composable get() = MainTab.entries.find { tab ->
+            currentDestination?.hasRoute(tab.route::class) == true
+        } ?: if (currentDestination?.hasRoute(Brand::class) == true) MainTab.HOME else null
 
     fun navigate(tab: MainTab) {
         val navOptions =
