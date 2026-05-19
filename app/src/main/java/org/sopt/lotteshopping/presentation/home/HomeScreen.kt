@@ -155,18 +155,20 @@ private fun HomeScreen(
                 Spacer(modifier = Modifier.height(16.dp))
             }
 
-            item {
-                UrlImage(
-                    url = uiState.bottomBanner?.imageUrl ?: "",
-                    contentDescription = null,
-                    placeholderDrawable = R.drawable.ic_launcher_background,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
-                        .aspectRatio(160f / 49f)
-                )
-                Spacer(modifier = Modifier.height(21.dp))
+            uiState.bottomBanner?.let { bottomBanner ->
+                item {
+                    UrlImage(
+                        url = bottomBanner.imageUrl,
+                        contentDescription = null,
+                        placeholderDrawable = R.drawable.ic_launcher_background,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp)
+                            .aspectRatio(160f / 49f)
+                    )
+                    Spacer(modifier = Modifier.height(21.dp))
+                }
             }
         }
     }
