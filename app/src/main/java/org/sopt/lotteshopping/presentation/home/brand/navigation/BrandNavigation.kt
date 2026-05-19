@@ -17,11 +17,13 @@ fun NavController.navigateToBrand(
 fun NavGraphBuilder.brandGraph(
     innerPadding: PaddingValues,
     navigateUp: () -> Unit,
+    navigateToHome: () -> Unit,
 ) {
     composable<Brand> {
         BrandRoute(
             innerPadding = innerPadding,
             navigateUp = navigateUp,
+            navigateToHome = navigateToHome,
         )
     }
 }

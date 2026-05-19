@@ -31,9 +31,11 @@ import org.sopt.lotteshopping.presentation.home.brand.component.ReservationCard
 fun BrandRoute(
     innerPadding: PaddingValues,
     navigateUp: () -> Unit,
+    navigateToHome:()->Unit,
 ) {
     BrandScreen(
         onBackClick = navigateUp,
+        onHomeClick = navigateToHome,
         modifier = Modifier.padding(innerPadding),
     )
 }
