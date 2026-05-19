@@ -17,6 +17,6 @@ class BannersRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getHomeBottomBanner(): Result<HomeBottomBannerModel> = suspendRunCatching {
-        bannersDataSource.getHomeBottomBanner().data!!.toModel()
+        requireNotNull(bannersDataSource.getHomeBottomBanner().data).toModel()
     }
 }

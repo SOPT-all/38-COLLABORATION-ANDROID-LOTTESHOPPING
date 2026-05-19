@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.sopt.lotteshopping.data.model.banners.HomeBottomBannerModel
 import org.sopt.lotteshopping.data.model.brands.HomeBeautyBrandModel
 import org.sopt.lotteshopping.data.model.preferences.HomePreferenceModel
 import org.sopt.lotteshopping.data.repository.BannersRepository
@@ -44,6 +43,12 @@ class HomeViewModel @Inject constructor(
                 }
                 .onFailure { Timber.e(it) }
 
+            bannersRepository.getHomeBottomBanner()
+                .onSuccess { bottomBanner ->
+                    _uiState.update { it.copy(bottomBanner = bottomBanner) }
+                }
+                .onFailure { Timber.e(it) }
+
             brandsRepository.getHomeBrands()
                 .onSuccess { brands ->
                     _uiState.update { it.copy(brands = brands.toImmutableList()) }
@@ -69,12 +74,9 @@ class HomeViewModel @Inject constructor(
                 ),
             )
 
-            val mockBottomBanner = HomeBottomBannerModel(1L, "")
-
             _uiState.update {
                 it.copy(
                     preference = mockPreference,
-                    bottomBanner = mockBottomBanner
                 )
             }
         }
