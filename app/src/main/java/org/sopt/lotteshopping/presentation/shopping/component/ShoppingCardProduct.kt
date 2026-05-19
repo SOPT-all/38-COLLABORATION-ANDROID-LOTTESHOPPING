@@ -22,7 +22,7 @@ import org.sopt.lotteshopping.R
 import org.sopt.lotteshopping.core.designsystem.component.UrlImage
 import org.sopt.lotteshopping.core.designsystem.theme.LOTTESHOPPINGTheme
 import org.sopt.lotteshopping.core.designsystem.theme.LotteTheme
-import org.sopt.lotteshopping.data.model.info.NewsModel
+import org.sopt.lotteshopping.data.model.shopping.NewsModel
 
 @Composable
 fun ShoppingCardProduct(
